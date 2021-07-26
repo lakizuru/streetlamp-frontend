@@ -1,5 +1,52 @@
 .App {
   text-align: center;
+  background-color: whitesmoke;
+  flex: initial;
+  flex-direction: column;
+}
+.Searchbox {
+  margin: 8px 0;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 70;
+}
+.Card {
+  width: 20%;
+  height: 45%;
+  justify-content: space-between;
+  border: 5%;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 1%;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  display: inline;
+  padding: 1%;
+  background-color: #ffffff;
+  float: left;
+}
+
+h3 {
+  display: inline;
+  color: grey;
+  font-weight: bold;
+}
+
+.Container1 {
+  flex-direction: row;
+  justify-content: space-around;
+  display: flex;
+  padding: 1%;
+  padding-top: 6%;
 }
 
 .App-logo {
