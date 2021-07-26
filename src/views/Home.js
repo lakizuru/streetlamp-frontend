@@ -1,4 +1,7 @@
-function Home() {
+import React , { Component } from 'react';
+
+class Home extends Component {
+  render() {
     return(
       <div id="wrapper">
         <div className="d-flex flex-column" id="content-wrapper">
@@ -90,7 +93,7 @@ function Home() {
                   <li className="nav-item dropdown no-arrow">
                     <div className="nav-item dropdown no-arrow"><a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span className="d-none d-lg-inline me-2 text-gray-600 small">Valerie Luna</span></a>
                       <div className="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a className="dropdown-item" href="#"><i className="fas fa-user fa-sm fa-fw me-2 text-gray-400" />&nbsp;Profile</a><a className="dropdown-item" href="#"><i className="fas fa-cogs fa-sm fa-fw me-2 text-gray-400" />&nbsp;Settings</a><a className="dropdown-item" href="#"><i className="fas fa-list fa-sm fa-fw me-2 text-gray-400" />&nbsp;Activity log</a>
-                        <div className="dropdown-divider" /><a className="dropdown-item" href="#"><i className="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400" />&nbsp;Logout</a>
+                        <div className="dropdown-divider" /><a className="dropdown-item" href="#"><i className="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"/>&nbsp;Logout</a>
                       </div>
                     </div>
                   </li>
@@ -224,6 +227,7 @@ function Home() {
         </div><a className="border rounded d-inline scroll-to-top" href="#page-top"><i className="fas fa-angle-up" /></a>
       </div>              
     );
+  }
 }
 
 export default Home;
