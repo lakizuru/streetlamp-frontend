@@ -1,7 +1,4 @@
-import React, { Component } from 'react';
-
-class Login extends Component {
-  render() {
+function Login() {
     return (
       <div className="container">
         <div className="row justify-content-center">
@@ -138,7 +135,5 @@ class Login extends Component {
       </div>
     );
   }
-}
-
 
 export default Login;
