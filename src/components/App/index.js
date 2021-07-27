@@ -15,6 +15,7 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <Navigation />
         <Route path={ROUTES.HOME} component={Home}/>
         <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForget}/>
         <Route path={ROUTES.SIGN_IN} component={SignIn}/>
