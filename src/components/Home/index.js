@@ -1,6 +1,6 @@
 import NavBar from "../NavBar";
 import React, { Component } from "react";
-import NumCard from "..NumCard";
+import NumCard from "../NumCard";
 
 class Home extends Component {
   render() {
