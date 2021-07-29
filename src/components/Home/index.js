@@ -2,11 +2,15 @@ import NavBar from "../NavBar";
 import React, { Component } from "react";
 import NumCard from "../NumCard";
 import SignOutButton from "../SignOut";
+import { FirebaseAuthProvider, IfFirebaseAuthed } from "@react-firebase/auth";
+import firebase from 'firebase';
 
 class Home extends Component {
   render() {
     return (
-      <div id="wrapper">
+      <FirebaseAuthProvider firebase={firebase}>
+        <IfFirebaseAuthed>
+        <div id="wrapper">
         <div class="d-flex flex-column" id="content-wrapper">
           <div id="content">
             <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
@@ -500,6 +504,9 @@ class Home extends Component {
           <i class="fas fa-angle-up"></i>
         </a>
       </div>
+
+        </IfFirebaseAuthed>
+      </FirebaseAuthProvider>
     );
   }
 }

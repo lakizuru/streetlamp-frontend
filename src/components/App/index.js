@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import firebase from 'firebase';
 import {
   FirebaseAuthProvider,
@@ -24,17 +24,17 @@ class App extends Component {
               <IfFirebaseUnAuthed>
                 <SignIn></SignIn>
               </IfFirebaseUnAuthed>
-              <IfFirebaseAuthed>
-                <Home></Home>
-              </IfFirebaseAuthed>
+
             </FirebaseAuthProvider>
-      
-        <Route exact path={ROUTES.HOME} component={Home}/>
-        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForget}/>
-        <Route path={ROUTES.SIGN_IN} component={SignIn}/>
-        <Route path={ROUTES.SIGN_UP} component={SignUp}/>
-        <Route path={ROUTES.ACCOUNT} component={Account}/>
-        <Route path={ROUTES.ADMIN} component={Admin}/>
+
+        <Switch>
+        <Route path={ROUTES.HOME}>
+          <Home/>
+        </Route>
+        <Router path={ROUTES.SIGN_IN}>
+          <SignIn></SignIn>
+        </Router>
+        </Switch>
       </Router>
     );
   }
