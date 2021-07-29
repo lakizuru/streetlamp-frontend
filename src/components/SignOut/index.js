@@ -12,6 +12,7 @@ class SignOutButtonBase extends Component {
     }
     onSignOut = event => {
         firebase.auth().signOut();
+        return 0;
     }
 
     render() {
