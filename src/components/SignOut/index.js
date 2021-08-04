@@ -19,7 +19,7 @@ class SignOutButtonBase extends Component {
         return (
           <a
             class="dropdown-item"
-            href="#"
+            href=""
             type="button"
             onClick={this.onSignOut}
           >

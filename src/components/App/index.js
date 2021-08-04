@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import firebase from 'firebase';
 import {
   FirebaseAuthProvider,
@@ -21,19 +21,22 @@ class App extends Component {
     return (
       <Router>
       <FirebaseAuthProvider firebase={firebase}>
+              <IfFirebaseAuthed>
+                <Redirect to={ROUTES.HOME}/>
+              </IfFirebaseAuthed>
               <IfFirebaseUnAuthed>
-                <SignIn></SignIn>
+                <Redirect to={ROUTES.SIGN_IN}/>
               </IfFirebaseUnAuthed>
 
             </FirebaseAuthProvider>
 
         <Switch>
-        <Route path={ROUTES.HOME}>
+        <Route exact path={ROUTES.HOME}>
           <Home/>
         </Route>
-        <Router path={ROUTES.SIGN_IN}>
+        <Route exact path={ROUTES.SIGN_IN}>
           <SignIn></SignIn>
-        </Router>
+        </Route>
         </Switch>
       </Router>
     );

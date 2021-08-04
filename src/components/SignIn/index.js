@@ -194,7 +194,7 @@ class SignInFormBase extends Component {
           Login
         </button>
         <hr />
-        {error && <p>{error.message}</p>}
+        {error && <p style={{color: 'red'}}>{error.message}</p>}
       </form>
     );
   }
