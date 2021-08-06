@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import { withFirebase } from '../Firebase';
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -12,14 +12,14 @@ class SignOutButtonBase extends Component {
     }
     onSignOut = event => {
         firebase.auth().signOut();
-        return 0;
+        <Redirect to={ROUTES.LANDING}/>
     }
 
     render() {
         return (
           <a
             class="dropdown-item"
-            href=""
+            href="/"
             type="button"
             onClick={this.onSignOut}
           >

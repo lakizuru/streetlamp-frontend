@@ -5,6 +5,8 @@ import "firebase/auth";
 import { Redirect } from "react-router-dom";
 import * as ROUTES from './../../constants/routes';
 import SignIn from "../SignIn";
+import NavBar from "../NavBar";
+import Footer from "../Footer";
 
 const INITIAL_STATE = {
   email: "",
@@ -14,21 +16,6 @@ const INITIAL_STATE = {
   error: null,
 };
 
-class NewAdminButton extends Component {
-  handleClick = () => {
-    <SignUp/>;
-  };
-
-  render() {
-    return (
-      <a class="dropdown-item" href="/signup">
-        <i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>
-        &nbsp;Add New Admin
-      </a>
-    );
-  }
-}
-
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -36,6 +23,7 @@ class SignUp extends Component {
   render() {
     return (
       <body className="bg-gradient-primary">
+      <NavBar/>
         <div className="container">
           <div className="card shadow-lg o-hidden border-0 my-5">
             <div className="card-body p-0">
@@ -66,6 +54,7 @@ class SignUp extends Component {
             </div>
           </div>
         </div>
+        <Footer/>
       </body>
     );
   }
@@ -177,4 +166,4 @@ class SignUpForm extends Component {
   }
 }
 
-export { SignUpForm, NewAdminButton };
+export { SignUpForm };
