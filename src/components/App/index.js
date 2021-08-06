@@ -15,27 +15,24 @@ import PasswordForget from '../PasswordForget';
 import SignUp from '../SignUp';
 
 import * as ROUTES from '../../constants/routes';
+import Landing from '../Landing';
 
 class App extends Component {
   render() {
     return (
       <Router>
-      <FirebaseAuthProvider firebase={firebase}>
-              <IfFirebaseAuthed>
-                <Redirect to={ROUTES.HOME}/>
-              </IfFirebaseAuthed>
-              <IfFirebaseUnAuthed>
-                <Redirect to={ROUTES.SIGN_IN}/>
-              </IfFirebaseUnAuthed>
-
-            </FirebaseAuthProvider>
-
         <Switch>
         <Route exact path={ROUTES.HOME}>
           <Home/>
         </Route>
         <Route exact path={ROUTES.SIGN_IN}>
           <SignIn></SignIn>
+        </Route>
+        <Route exact path={ROUTES.SIGN_UP}>
+          <SignUp/>
+        </Route>
+        <Route exact path={ROUTES.LANDING}>
+          <Landing/>
         </Route>
         </Switch>
       </Router>

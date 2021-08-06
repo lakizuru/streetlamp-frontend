@@ -7,6 +7,7 @@ import firebase from "firebase";
 import SignIn from "../SignIn";
 import { Redirect, Router } from "react-router-dom";
 import * as ROUTES from "./../../constants/routes";
+import { NewAdminButton } from "../SignUp";
 
 class Home extends Component {
   render() {
@@ -297,10 +298,7 @@ class Home extends Component {
                                 <i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>
                                 &nbsp;Settings
                               </a>
-                              <a class="dropdown-item" href="#">
-                                <i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>
-                                &nbsp;Activity log
-                              </a>
+                              <NewAdminButton/>
                               <div class="dropdown-divider"></div>
                               <SignOutButton />
                             </div>

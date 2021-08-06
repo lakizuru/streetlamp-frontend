@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { FirebaseContext } from "../Firebase";
 import firebase from "firebase/app";
 import "firebase/auth";
+import { Redirect } from "react-router-dom";
+import * as ROUTES from './../../constants/routes';
+import SignIn from "../SignIn";
 
 const INITIAL_STATE = {
   email: "",
@@ -10,6 +13,21 @@ const INITIAL_STATE = {
   password2: "",
   error: null,
 };
+
+class NewAdminButton extends Component {
+  handleClick = () => {
+    <SignUp/>;
+  };
+
+  render() {
+    return (
+      <a class="dropdown-item" href="/signup">
+        <i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>
+        &nbsp;Add New Admin
+      </a>
+    );
+  }
+}
 
 class SignUp extends Component {
   constructor(props) {
@@ -159,4 +177,4 @@ class SignUpForm extends Component {
   }
 }
 
-export { SignUpForm };
+export { SignUpForm, NewAdminButton };
