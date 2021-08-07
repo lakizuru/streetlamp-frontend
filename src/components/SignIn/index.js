@@ -6,6 +6,7 @@ import { compose } from "recompose";
 
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
+import Footer from "../Footer";
 
 class SignIn extends Component {
   render() {
@@ -102,6 +103,7 @@ class SignIn extends Component {
           </div>
         </div>
       </div>
+      <Footer/>
       </div>
     );
   }

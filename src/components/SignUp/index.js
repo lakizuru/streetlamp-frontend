@@ -22,6 +22,7 @@ class SignUp extends Component {
   }
   render() {
     return (
+      <div style={{backgroundColor: '#4e73df'}}>
         <div className="container">
           <div className="card shadow-lg o-hidden border-0 my-5">
             <div className="card-body p-0">
@@ -51,6 +52,7 @@ class SignUp extends Component {
               </div>
             </div>
           </div>
+        </div>
         </div>
     );
   }

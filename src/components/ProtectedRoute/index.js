@@ -11,7 +11,7 @@ class ProtectedRoute extends React.Component {
         let isAuthenticated = localStorage.getItem("token") !== null ? true : false;
        
         return isAuthenticated ? (
-            <div>
+            <div style={{backgroundColor: '#4e73df'}}>
             <NavBar/>
             <Component />
             <Footer/>
