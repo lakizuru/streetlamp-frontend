@@ -4,7 +4,6 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from './components/App';
 import Firebase, {FirebaseContext} from './components/Firebase';
-import Home from './components/Home';
 
 ReactDOM.render(
   <FirebaseContext.Provider value={new Firebase()}>

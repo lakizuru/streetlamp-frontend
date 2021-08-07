@@ -125,7 +125,8 @@ class SignInFormBase extends Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then((response) => {
+        console.log(response)
         this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.HOME);
 

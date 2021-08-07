@@ -13,27 +13,27 @@ import Admin from '../Admin';
 import Account from '../Account';
 import PasswordForget from '../PasswordForget';
 import SignUp from '../SignUp';
+import ProtectedRoute from '../ProtectedRoute';
 
 import * as ROUTES from '../../constants/routes';
 import Landing from '../Landing';
 
 class App extends Component {
+  
   render() {
     return (
       <Router>
         <Switch>
-        <Route exact path={ROUTES.HOME}>
-          <Home/>
-        </Route>
-        <Route exact path={ROUTES.SIGN_IN}>
-          <SignIn></SignIn>
-        </Route>
-        <Route exact path={ROUTES.SIGN_UP}>
-          <SignUp/>
-        </Route>
-        <Route exact path={ROUTES.LANDING}>
-          <Landing/>
-        </Route>
+          <ProtectedRoute path={ROUTES.HOME} component={Home} />
+          <Route exact path={ROUTES.SIGN_IN}>
+            <SignIn />
+          </Route>
+          <Route exact path={ROUTES.SIGN_UP}>
+            <SignUp />
+          </Route>
+          <Route exact path={ROUTES.LANDING}>
+            <Landing />
+          </Route>
         </Switch>
       </Router>
     );

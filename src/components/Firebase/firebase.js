@@ -31,6 +31,15 @@ class Firebase {
       this.auth.signOut();
   }
 
+  doCheckAuth = () =>
+  {
+      if(this.auth.currentUser){
+        return true;
+      }else{
+        return false;
+      }
+  }
+
   doPasswordReset = email =>
   {
       this.auth.sendPasswordResetEmail(email);
