@@ -22,8 +22,6 @@ class SignUp extends Component {
   }
   render() {
     return (
-      <body className="bg-gradient-primary">
-      <NavBar/>
         <div className="container">
           <div className="card shadow-lg o-hidden border-0 my-5">
             <div className="card-body p-0">
@@ -54,8 +52,6 @@ class SignUp extends Component {
             </div>
           </div>
         </div>
-        <Footer/>
-      </body>
     );
   }
 }

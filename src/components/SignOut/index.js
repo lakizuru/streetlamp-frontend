@@ -11,7 +11,9 @@ class SignOutButtonBase extends Component {
         super(props)
     }
     onSignOut = event => {
+      localStorage.clear();
         firebase.auth().signOut();
+        
         <Redirect to={ROUTES.LANDING}/>
     }
 

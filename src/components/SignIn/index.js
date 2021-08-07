@@ -10,6 +10,7 @@ import * as ROUTES from "../../constants/routes";
 class SignIn extends Component {
   render() {
     return (
+      <div style={{backgroundColor: '#4e73df'}}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-9 col-lg-12 col-xl-10">
@@ -101,6 +102,7 @@ class SignIn extends Component {
           </div>
         </div>
       </div>
+      </div>
     );
   }
 }
@@ -127,6 +129,7 @@ class SignInFormBase extends Component {
       .signInWithEmailAndPassword(email, password)
       .then((response) => {
         console.log(response)
+        localStorage.setItem("token", firebase.auth().currentUser.getIdToken());
         this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.HOME);
 

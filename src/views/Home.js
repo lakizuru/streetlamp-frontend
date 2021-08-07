@@ -5,10 +5,6 @@ import NumCard from "..NumCard";
 class Home extends Component {
   render() {
     return (
-      <div id="wrapper">
-        <div className="d-flex flex-column" id="content-wrapper">
-          <div id="content">
-            <NavBar />
             <div className="container-fluid">
               <div className="d-sm-flex justify-content-between align-items-center mb-4">
                 <h3 className="text-dark mb-0">Dashboard</h3>
@@ -141,19 +137,6 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-          </div>
-          <footer className="bg-white sticky-footer">
-            <div className="container my-auto">
-              <div className="text-center my-auto copyright">
-                <span>Copyright © Smart StreetLamp 2021</span>
-              </div>
-            </div>
-          </footer>
-        </div>
-        <a className="border rounded d-inline scroll-to-top" href="#page-top">
-          <i className="fas fa-angle-up" />
-        </a>
-      </div>
     );
   }
 }

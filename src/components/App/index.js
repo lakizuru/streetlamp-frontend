@@ -25,15 +25,9 @@ class App extends Component {
       <Router>
         <Switch>
           <ProtectedRoute path={ROUTES.HOME} component={Home} />
-          <Route exact path={ROUTES.SIGN_IN}>
-            <SignIn />
-          </Route>
-          <Route exact path={ROUTES.SIGN_UP}>
-            <SignUp />
-          </Route>
-          <Route exact path={ROUTES.LANDING}>
-            <Landing />
-          </Route>
+          <Route exact path={ROUTES.SIGN_IN} component={SignIn}/>
+          <ProtectedRoute path={ROUTES.SIGN_UP} component={SignUp}/>
+          <Route exact path={ROUTES.LANDING} component={Landing}/>
         </Switch>
       </Router>
     );
