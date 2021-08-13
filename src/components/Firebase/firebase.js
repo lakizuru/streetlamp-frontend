@@ -4,10 +4,11 @@ import "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyC5qLpRlcNMt6J7uF1Ss1CjsCG2PQUe_CA",
   authDomain: "iotstreetlamp.firebaseapp.com",
+  databaseURL: "https://iotstreetlamp-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "iotstreetlamp",
   storageBucket: "iotstreetlamp.appspot.com",
   messagingSenderId: "200888796350",
-  appId: "1:200888796350:web:7646ee79ee92da07350aef",
+  appId: "1:200888796350:web:7646ee79ee92da07350aef"
 };
 
 class Firebase {
