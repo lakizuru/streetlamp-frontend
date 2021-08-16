@@ -1,21 +1,34 @@
-import NavBar from "../NavBar";
 import React, { Component } from "react";
 import NumCard from "../NumCard";
-import SignOutButton from "../SignOut";
-import { FirebaseAuthProvider, IfFirebaseAuthed } from "@react-firebase/auth";
-import firebase from "firebase";
-import SignIn from "../SignIn";
-import { Redirect, Router } from "react-router-dom";
-import * as ROUTES from "./../../constants/routes";
-import { NewAdminButton } from "../SignUp";
-import Footer from "../Footer";
+import Firebase, {database} from "../Firebase/firebase";
 
 class Home extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      lights: [],
+    }
+  }
+
+  componentDidMount(){
+    database.ref('/Lights/').on('value', snapshot => {
+      let allLights = [];
+      snapshot.forEach(snap => {
+        allLights.push(snap.val());
+      });
+      
+    });
+    
+  }
+
   render() {
     return (
             <div class="container-fluid">
               <div class="d-sm-flex justify-content-between align-items-center mb-4">
                 <h3 style={{color: 'white', fontWeight: 'bold'}}>Dashboard</h3>
+                <p>
+{this.state.lights}
+                </p>
                 <a
                   class="btn btn-primary btn-sm d-none d-sm-inline-block"
                   role="button"
