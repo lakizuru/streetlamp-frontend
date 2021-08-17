@@ -7,20 +7,39 @@ class Home extends Component {
     super(props);
     this.state = {
       lights: [],
+      onLights: 0,
+      regLights: 0,
+      faults: 0,
       isLoading: true
     }
 
     this.getData();
+    this.analyzeData();
   }
 
   getLights() {
     database.ref('/Lights/').on('value', (snapshot)=> {
       let allLights = [];
+      let onLights = 0;
+      let regLights = 0;
+      let faults = 0;
       snapshot.forEach(snap => {
         allLights.push(snap.val());
+        if (snap.val().Status === "ON") {
+          onLights++;
+        }
+        if (snap.val().Registration) {
+          regLights++;
+        }
+        if (snap.val().Faulty === true) {
+          faults++;
+        }
       });
       this.setState({
-        lights: allLights
+        lights: allLights,
+        onLights: onLights,
+        regLights: regLights,
+        faults: faults
       })
     });
   }
@@ -28,6 +47,12 @@ class Home extends Component {
   getData(){
     this.getLights();
     this.state.isLoading = false;
+  }
+
+  analyzeData(){
+    this.state.lights.forEach(light => {
+      console.log(light.Status);
+    })
   }
 
   render() {
@@ -54,9 +79,9 @@ class Home extends Component {
               </div>
               <div class="row">
               <NumCard type="text-uppercase text-primary fw-bold text-xs mb-1" title="Total" value={this.state.lights.length}/>
-              <NumCard type="text-uppercase text-info fw-bold text-xs mb-1" title="Connected" value={this.state.lights.length}/>
-              <NumCard type="text-uppercase text-success fw-bold text-xs mb-1" title="Active" value={this.state.lights.length}/>
-              <NumCard type="text-uppercase text-warning fw-bold text-xs mb-1" title="Faulty" value={this.state.lights.length}/>
+              <NumCard type="text-uppercase text-info fw-bold text-xs mb-1" title="Connected" value={this.state.regLights}/>
+              <NumCard type="text-uppercase text-success fw-bold text-xs mb-1" title="Active" value={this.state.onLights}/>
+              <NumCard type="text-uppercase text-warning fw-bold text-xs mb-1" title="Faulty" value={this.state.faults}/>
               </div>
               <div class="row">
                 <div class="col-lg-8 col-xl-9">
