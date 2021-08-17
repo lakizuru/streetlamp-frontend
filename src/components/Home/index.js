@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {database} from "../Firebase/firebase";
-import NavBar from "../NavBar";
 import NumCard from "../NumCard";
 
 class Home extends Component {
@@ -10,13 +9,19 @@ class Home extends Component {
       lights: [],
       isLoading: true
     }
+
+    this.getData();
   }
 
   getLights() {
     database.ref('/Lights/').on('value', (snapshot)=> {
+      let allLights = [];
       snapshot.forEach(snap => {
-        this.state.lights.push(snap.val());
+        allLights.push(snap.val());
       });
+      this.setState({
+        lights: allLights
+      })
     });
   }
 
@@ -26,7 +31,6 @@ class Home extends Component {
   }
 
   render() {
-    this.getData();
     if (this.state.isLoading){
       return(
         <span>Loading... Please wait</span>
@@ -53,10 +57,6 @@ class Home extends Component {
               <NumCard type="text-uppercase text-info fw-bold text-xs mb-1" title="Connected" value={this.state.lights.length}/>
               <NumCard type="text-uppercase text-success fw-bold text-xs mb-1" title="Active" value={this.state.lights.length}/>
               <NumCard type="text-uppercase text-warning fw-bold text-xs mb-1" title="Faulty" value={this.state.lights.length}/>
-                
-                
-                
-                
               </div>
               <div class="row">
                 <div class="col-lg-8 col-xl-9">
