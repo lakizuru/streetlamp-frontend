@@ -1,33 +1,43 @@
 import React, { Component } from "react";
+import {database} from "../Firebase/firebase";
+import NavBar from "../NavBar";
 import NumCard from "../NumCard";
-import Firebase, {database} from "../Firebase/firebase";
 
 class Home extends Component {
   constructor(props){
     super(props);
     this.state = {
       lights: [],
+      isLoading: true
     }
   }
 
-  componentDidMount(){
-    database.ref('/Lights/').on('value', snapshot => {
-      let allLights = [];
+  getLights() {
+    database.ref('/Lights/').on('value', (snapshot)=> {
       snapshot.forEach(snap => {
-        allLights.push(snap.val());
+        this.state.lights.push(snap.val());
       });
-      
     });
-    
+  }
+
+  getData(){
+    this.getLights();
+    this.state.isLoading = false;
   }
 
   render() {
+    this.getData();
+    if (this.state.isLoading){
+      return(
+        <span>Loading... Please wait</span>
+      );
+    }
+    else {
     return (
             <div class="container-fluid">
               <div class="d-sm-flex justify-content-between align-items-center mb-4">
                 <h3 style={{color: 'white', fontWeight: 'bold'}}>Dashboard</h3>
-                <p>
-{this.state.lights}
+                <p style={{color: 'white'}}>
                 </p>
                 <a
                   class="btn btn-primary btn-sm d-none d-sm-inline-block"
@@ -39,99 +49,14 @@ class Home extends Component {
                 </a>
               </div>
               <div class="row">
-                <div class="col-md-6 col-xl-3 mb-4">
-                  <div class="card shadow border-start-primary py-2">
-                    <div class="card-body">
-                      <div class="row align-items-center no-gutters">
-                        <div class="col me-2">
-                          <div class="text-uppercase text-primary fw-bold text-xs mb-1">
-                            <span>Total</span>
-                          </div>
-                          <div class="text-dark fw-bold h5 mb-0">
-                            <span>$40,000</span>
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-xl-3 mb-4">
-                  <div class="card shadow border-start-success py-2">
-                    <div class="card-body">
-                      <div class="row align-items-center no-gutters">
-                        <div class="col me-2">
-                          <div class="text-uppercase text-success fw-bold text-xs mb-1">
-                            <span>connected</span>
-                          </div>
-                          <div class="text-dark fw-bold h5 mb-0">
-                            <span>$215,000</span>
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-xl-3 mb-4">
-                  <div class="card shadow border-start-info py-2">
-                    <div class="card-body">
-                      <div class="row align-items-center no-gutters">
-                        <div class="col me-2">
-                          <div class="text-uppercase text-info fw-bold text-xs mb-1">
-                            <span>active</span>
-                          </div>
-                          <div class="row g-0 align-items-center">
-                            <div class="col-auto">
-                              <div class="text-dark fw-bold h5 mb-0 me-3">
-                                <span>50%</span>
-                              </div>
-                            </div>
-                            <div class="col">
-                              <div class="progress progress-sm">
-                                <div
-                                  class="progress-bar bg-info"
-                                  aria-valuenow="50"
-                                  aria-valuemin="0"
-                                  aria-valuemax="100"
-                                  styles={{ width: "50%" }}
-                                >
-                                  <span class="visually-hidden">50%</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-xl-3 mb-4">
-                  <div class="card shadow border-start-warning py-2">
-                    <div class="card-body">
-                      <div class="row align-items-center no-gutters">
-                        <div class="col me-2">
-                          <div class="text-uppercase text-warning fw-bold text-xs mb-1">
-                            <span>faults</span>
-                          </div>
-                          <div class="text-dark fw-bold h5 mb-0">
-                            <span>18</span>
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <i class="fas fa-comments fa-2x text-gray-300"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <NumCard type="text-uppercase text-primary fw-bold text-xs mb-1" title="Total" value={this.state.lights.length}/>
+              <NumCard type="text-uppercase text-info fw-bold text-xs mb-1" title="Connected" value={this.state.lights.length}/>
+              <NumCard type="text-uppercase text-success fw-bold text-xs mb-1" title="Active" value={this.state.lights.length}/>
+              <NumCard type="text-uppercase text-warning fw-bold text-xs mb-1" title="Faulty" value={this.state.lights.length}/>
+                
+                
+                
+                
               </div>
               <div class="row">
                 <div class="col-lg-8 col-xl-9">
@@ -226,6 +151,8 @@ class Home extends Component {
               </div>
             </div>
     );
+          
+  }
   }
 }
 

@@ -12,9 +12,6 @@ const INITIAL_STATE = {
 };
 
 class SignUp extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div style={{backgroundColor: '#4e73df'}}>
