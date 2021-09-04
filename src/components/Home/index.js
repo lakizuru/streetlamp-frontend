@@ -13,7 +13,10 @@ class Home extends Component {
       faults: 0,
       
       isLoading: true,
-      global
+
+      // global controllers
+      global: null,
+      globalOn: null
     }
     this.getData();
   }
@@ -27,6 +30,19 @@ class Home extends Component {
     else {
       database.ref('/').update({
         Mode: true
+      });
+    }
+  }
+
+  handleGlobalOn = event => {
+    if(this.state.globalOn) {
+      database.ref('/Global').update({
+        Status: false
+      });
+    }
+    else {
+      database.ref('/Global').update({
+        Status: true
       });
     }
   }
@@ -68,6 +84,12 @@ class Home extends Component {
     database.ref('/Mode').on('value', (snapshot) => {
       this.setState({
         global: snapshot.val()
+      })
+    })
+
+    database.ref('/Global').on('child_changed', (snapshot) => {
+      this.setState({
+        globalOn: snapshot.val()
       })
     })
   }
@@ -146,7 +168,7 @@ class Home extends Component {
                   </div>
                   <div class="col">
                     <label className="switch">
-                      <input type="checkbox" checked={this.state.global}/>
+                      <input type="checkbox" checked={this.state.globalOn} onChange={this.handleGlobalOn}/>
                       <div className="slider"></div>
                     </label>
                   </div>
