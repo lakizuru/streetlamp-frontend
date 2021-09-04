@@ -13,24 +13,22 @@ class Home extends Component {
       faults: 0,
       
       isLoading: true,
-
-      global: false
+      global
     }
     this.getData();
   }
 
   handleGlobal = event => {
     if(this.state.global) {
-      this.setState({
-        global: false
+      database.ref('/').update({
+        Mode: false
       });
     }
     else {
-      this.setState({
-        global: true
+      database.ref('/').update({
+        Mode: true
       });
     }
-
   }
 
   getLights() {
@@ -62,7 +60,16 @@ class Home extends Component {
 
   getData(){
     this.getLights();
+    this.getControllers();
     this.state.isLoading = false;
+  }
+
+  getControllers(){
+    database.ref('/Mode').on('value', (snapshot) => {
+      this.setState({
+        global: snapshot.val()
+      })
+    })
   }
 
   render() {
