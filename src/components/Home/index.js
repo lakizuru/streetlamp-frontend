@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {database} from "../Firebase/firebase";
-import NumCard from "../NumCard";
+import NumCard from "./NumCard";
 import PowerChart from "./chart";
 
 class Home extends Component {
@@ -16,8 +16,21 @@ class Home extends Component {
 
       global: false
     }
-
     this.getData();
+  }
+
+  handleGlobal = event => {
+    if(this.state.global) {
+      this.setState({
+        global: false
+      });
+    }
+    else {
+      this.setState({
+        global: true
+      });
+    }
+
   }
 
   getLights() {
@@ -50,20 +63,6 @@ class Home extends Component {
   getData(){
     this.getLights();
     this.state.isLoading = false;
-  }
-
-  handleGlobalToggle() {
-    if(this.state.global) {
-      this.setState({
-        global: false
-      })
-    }
-    else {
-      this.setState({
-        global: true
-      })
-    }
-    console.log(this.state.global);
   }
 
   render() {
@@ -129,7 +128,7 @@ class Home extends Component {
               <div class="card-header d-flex justify-content-between align-items-center">
                 <h6 class="text-primary fw-bold m-0">Global Controllers</h6>
                 <label className="switch">
-                      <input type="checkbox" value={this.state.global}/>
+                      <input type="checkbox" onChange={this.handleGlobal} checked={this.state.global}/>
                       <div className="slider"></div>
                     </label>
               </div>
@@ -140,7 +139,7 @@ class Home extends Component {
                   </div>
                   <div class="col">
                     <label className="switch">
-                      <input type="checkbox" />
+                      <input type="checkbox" checked={this.state.global}/>
                       <div className="slider"></div>
                     </label>
                   </div>
