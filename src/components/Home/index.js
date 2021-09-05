@@ -16,7 +16,9 @@ class Home extends Component {
 
       // global controllers
       global: null,
-      globalOn: null
+      globalOn: null,
+      globalBrightness: null,
+      globalColorTemp: null
     }
     this.getData();
   }
@@ -45,6 +47,19 @@ class Home extends Component {
         Status: true
       });
     }
+  }
+
+
+  handleGlobalColorTemp (value) {
+    database.ref('/Global').update({
+      Temperature: value
+    })
+  }
+
+  handleGlobalBrightness(value) {
+    database.ref('/Global').update({
+      Brightness: value
+    })
   }
 
   getLights() {
@@ -87,9 +102,21 @@ class Home extends Component {
       })
     })
 
-    database.ref('/Global').on('child_changed', (snapshot) => {
+    database.ref('/Global/Status').on('value', (snapshot) => {
       this.setState({
         globalOn: snapshot.val()
+      })
+    })
+
+    database.ref('/Global/Brightness').on('value', (snapshot) => {
+      this.setState({
+        globalBrightness: snapshot.val()
+      })
+    })
+
+    database.ref('/Global/Temperature').on('value', (snapshot) => {
+      this.setState({
+        globalColorTemp: snapshot.val()
       })
     })
   }
@@ -147,7 +174,7 @@ class Home extends Component {
               </div>
               <div class="card-body">
                 <div class="chart-area">
-                  <PowerChart/>
+                  <PowerChart />
                 </div>
               </div>
             </div>
@@ -157,9 +184,13 @@ class Home extends Component {
               <div class="card-header d-flex justify-content-between align-items-center">
                 <h6 class="text-primary fw-bold m-0">Global Controllers</h6>
                 <label className="switch">
-                      <input type="checkbox" onChange={this.handleGlobal} checked={this.state.global}/>
-                      <div className="slider"></div>
-                    </label>
+                  <input
+                    type="checkbox"
+                    onChange={this.handleGlobal}
+                    checked={this.state.global}
+                  />
+                  <div className="slider"></div>
+                </label>
               </div>
               <div class="card-body">
                 <div class="row">
@@ -168,7 +199,11 @@ class Home extends Component {
                   </div>
                   <div class="col">
                     <label className="switch">
-                      <input type="checkbox" checked={this.state.globalOn} onChange={this.handleGlobalOn}/>
+                      <input
+                        type="checkbox"
+                        checked={this.state.globalOn}
+                        onChange={this.handleGlobalOn}
+                      />
                       <div className="slider"></div>
                     </label>
                   </div>
@@ -178,7 +213,15 @@ class Home extends Component {
                     <span>Brightness</span>
                   </div>
                   <div class="col">
-                    <input class="form-range" type="range"></input>
+                    <input
+                      id="BrightnessSlider"
+                      class="form-range"
+                      type="range"
+                      value={this.state.globalBrightness}
+                      min="1"
+                      max="5"
+                      onChange=""
+                    ></input>
                   </div>
                 </div>
                 <div class="row">
@@ -186,7 +229,14 @@ class Home extends Component {
                     <span>Temperature</span>
                   </div>
                   <div class="col">
-                    <input class="form-range" type="range"></input>
+                    <input
+                      class="form-range"
+                      type="range"
+                      value=""
+                      min="1"
+                      max="5"
+                      onChange=""
+                    ></input>
                   </div>
                 </div>
                 <div class="row">
