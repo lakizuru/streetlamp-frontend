@@ -49,16 +49,15 @@ class Home extends Component {
     }
   }
 
-
-  handleGlobalColorTemp (value) {
+  handleGlobalColorTemp() {
     database.ref('/Global').update({
-      Temperature: value
+      Temperature: document.getElementById("tempSlider").value
     })
   }
 
-  handleGlobalBrightness(value) {
+  handleGlobalBrightness() {
     database.ref('/Global').update({
-      Brightness: value
+      Brightness: document.getElementById("brightSlider").value
     })
   }
 
@@ -84,7 +83,7 @@ class Home extends Component {
         lights: allLights,
         onLights: onLights,
         regLights: regLights,
-        faults: faults
+        faults: faults,
       })
     });
   }
@@ -213,14 +212,13 @@ class Home extends Component {
                     <span>Brightness</span>
                   </div>
                   <div class="col">
-                    <input
-                      id="BrightnessSlider"
-                      class="form-range"
+                  <input
+                      class="form-range" id="brightSlider"
                       type="range"
                       value={this.state.globalBrightness}
                       min="1"
                       max="5"
-                      onChange=""
+                      onChange={this.handleGlobalBrightness}
                     ></input>
                   </div>
                 </div>
@@ -230,12 +228,12 @@ class Home extends Component {
                   </div>
                   <div class="col">
                     <input
-                      class="form-range"
+                      class="form-range" id="tempSlider"
                       type="range"
-                      value=""
+                      value={this.state.globalColorTemp}
                       min="1"
                       max="5"
-                      onChange=""
+                      onChange={this.handleGlobalColorTemp}
                     ></input>
                   </div>
                 </div>
@@ -277,8 +275,7 @@ class Home extends Component {
           </div>
         </div>
       </div>
-    );
-          
+    );          
   }
   }
 }
