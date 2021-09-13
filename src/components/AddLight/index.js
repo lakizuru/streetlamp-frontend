@@ -14,25 +14,27 @@ class AddLight extends Component {
     this.state = {...INITIAL_STATE}
     }
 
-  addLight(){
+  addLight = (event) => {
     const {serialNo, location, ldr, pir} = this.state;
     database.ref('/Lights/' + serialNo).set({
       Location: location,
       LDR: ldr,
       PIR: pir
-    })
+    });
+    alert("Light added to the system successfully!");
+    window.location.reload();
   }
 
   typePIR(){
-    this.state.pir = true;
-    this.state.ldr = false;
+    //this.state.pir = true;
+    //this.state.ldr = false;
     //this.setState({pir: true, ldr: false})
   }
 
   typeLDR(){
     //this.setState({pir: false, ldr: true})
-    this.state.pir = false;
-    this.state.ldr = true;
+    //this.state.pir = false;
+    //this.state.ldr = true;
   }
 
   onChange = (event) => {
@@ -123,7 +125,7 @@ class AddLight extends Component {
                     <button
                       className="btn btn-primary d-block btn-user w-100"
                       type="button"
-                      disabled={this.state.serialNo ==='' || this.state.location === '' || (this.state.pir === false && this.state.ldr === false)}
+                      //disabled={this.state.serialNo ==='' || this.state.location === '' || (this.state.pir === false && this.state.ldr === false)}
                       onClick={() => this.addLight()}
                     >
                       Submit
