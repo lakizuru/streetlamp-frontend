@@ -5,6 +5,7 @@ import SignIn from '../SignIn';
 import Home from '../Home';
 import SignUp from '../SignUp';
 import ProtectedRoute from '../ProtectedRoute';
+import AddLight from '../AddLight';
 
 import * as ROUTES from '../../constants/routes';
 import Landing from '../Landing';
@@ -19,6 +20,7 @@ class App extends Component {
           <Route exact path={ROUTES.SIGN_IN} component={SignIn}/>
           <ProtectedRoute path={ROUTES.SIGN_UP} component={SignUp}/>
           <Route exact path={ROUTES.LANDING} component={Landing}/>
+          <ProtectedRoute exact path={ROUTES.ADD_LIGHT} component={AddLight}/>
         </Switch>
       </Router>
     );

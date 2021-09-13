@@ -135,10 +135,10 @@ class Home extends Component {
           <a
             class="btn btn-primary btn-sm d-none d-sm-inline-block"
             role="button"
-            href="#"
+            href="/add-light"
           >
-            <i class="fas fa-download fa-sm text-white-50"></i>
-            &nbsp;Generate Report
+            <i ></i>
+            &nbsp;<b style={{fontSize: 15}}>💡Light+</b>
           </a>
         </div>
         <div class="row">
@@ -181,7 +181,7 @@ class Home extends Component {
           <div class="col-lg-4 col-xl-3 col-xxl-3">
             <div class="card">
               <div class="card-header d-flex justify-content-between align-items-center">
-                <h6 class="text-primary fw-bold m-0">Global Controllers</h6>
+                <h6 class="text-primary fw-bold m-0">Manual Override</h6>
                 <label className="switch">
                   <input
                     type="checkbox"
@@ -237,39 +237,7 @@ class Home extends Component {
                     ></input>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col">
-                    <span>Schedule ON/OFF</span>
-                  </div>
-                  <div class="col">
-                    <div class="row">
-                      <div class="col" styles={{ padding: "2px" }}>
-                        <input
-                          type="text"
-                          class="datetimepicker form-control"
-                          styles={{
-                            height: "25px",
-                            width: "100.125px",
-                            placeholder: "ON Time",
-                          }}
-                        ></input>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col" styles={{ padding: "2px" }}>
-                        <input
-                          type="text"
-                          class="datetimepicker form-control"
-                          styles={{
-                            height: "20px",
-                            width: "10.125px",
-                            placeholder: "OFF Time",
-                          }}
-                        ></input>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
