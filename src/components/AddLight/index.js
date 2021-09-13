@@ -1,23 +1,38 @@
 import React, { Component } from "react";
-//import { getDatabase } from "firebase/database";
 import { database } from "../Firebase/firebase";
+
+const INITIAL_STATE = {
+  serialNo: '',
+  location: '',
+  ldr: false,
+  pir: false
+}
 
 class AddLight extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      serialNo: '',
-      location: '',
-      type: ''
+    this.state = {...INITIAL_STATE}
     }
-  }
 
   addLight(){
-    database().ref('/Lights' + this.state.serialNo).set({
-      Type: this.state.type,
-      Location: this.state.location
-    });
+    const {serialNo, location, ldr, pir} = this.state;
+    database.ref('/Lights/' + serialNo).set({
+      Location: location,
+      LDR: ldr,
+      PIR: pir
+    })
+  }
+
+  typePIR(){
+    this.state.pir = true;
+    this.state.ldr = false;
+    //this.setState({pir: true, ldr: false})
+  }
+
+  typeLDR(){
+    //this.setState({pir: false, ldr: true})
+    this.state.pir = false;
+    this.state.ldr = true;
   }
 
   onChange = (event) => {
@@ -51,8 +66,8 @@ class AddLight extends Component {
                           type="text"
                           id="Serial Number"
                           placeholder="Serial Number"
-                          name="serialNumber"
-                          //onChange={this.onChange}
+                          name="serialNo"
+                          onChange={this.onChange}
                         />
                       </div>
                     </div>
@@ -63,7 +78,7 @@ class AddLight extends Component {
                         id="location"
                         placeholder="Location"
                         name="location"
-                        //onChange={this.onChange}
+                        onChange={this.onChange}
                       />
                     </div>
                     <div className="row mb-3">
@@ -77,7 +92,7 @@ class AddLight extends Component {
                             className="form-check-input"
                             id="formCheck-1"
                             name='trigger'
-                            //onClick={this.setState({type: true})}
+                            onClick={this.typePIR}
                           />
                           <label
                             className="form-check-label"
@@ -94,7 +109,7 @@ class AddLight extends Component {
                             className="form-check-input"
                             id="formCheck-2"
                             name='trigger'
-                            //onClick={this.setState({type: false})}
+                            onClick={this.typeLDR}
                           />
                           <label
                             className="form-check-label"
@@ -107,15 +122,13 @@ class AddLight extends Component {
                     </div>
                     <button
                       className="btn btn-primary d-block btn-user w-100"
-                      type="submit"
-                      //disabled={isInvalid}
-                      //onClick={alert(this.state)}
+                      type="button"
+                      disabled={this.state.serialNo ==='' || this.state.location === '' || (this.state.pir === false && this.state.ldr === false)}
+                      onClick={() => this.addLight()}
                     >
                       Submit
                     </button>
                   </form>
-                  <div className="text-center" />
-                  <div className="text-center" />
                 </div>
               </div>
             </div>
