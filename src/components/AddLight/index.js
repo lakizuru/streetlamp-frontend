@@ -1,9 +1,28 @@
 import React, { Component } from "react";
+//import { getDatabase } from "firebase/database";
+import { database } from "../Firebase/firebase";
 
 class AddLight extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      serialNo: '',
+      location: '',
+      type: ''
+    }
   }
+
+  addLight(){
+    database().ref('/Lights' + this.state.serialNo).set({
+      Type: this.state.type,
+      Location: this.state.location
+    });
+  }
+
+  onChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   render() {
     return (
@@ -32,7 +51,8 @@ class AddLight extends Component {
                           type="text"
                           id="Serial Number"
                           placeholder="Serial Number"
-                          name="Serial Number"
+                          name="serialNumber"
+                          //onChange={this.onChange}
                         />
                       </div>
                     </div>
@@ -43,6 +63,7 @@ class AddLight extends Component {
                         id="location"
                         placeholder="Location"
                         name="location"
+                        //onChange={this.onChange}
                       />
                     </div>
                     <div className="row mb-3">
@@ -56,6 +77,7 @@ class AddLight extends Component {
                             className="form-check-input"
                             id="formCheck-1"
                             name='trigger'
+                            //onClick={this.setState({type: true})}
                           />
                           <label
                             className="form-check-label"
@@ -72,6 +94,7 @@ class AddLight extends Component {
                             className="form-check-input"
                             id="formCheck-2"
                             name='trigger'
+                            //onClick={this.setState({type: false})}
                           />
                           <label
                             className="form-check-label"
@@ -85,6 +108,8 @@ class AddLight extends Component {
                     <button
                       className="btn btn-primary d-block btn-user w-100"
                       type="submit"
+                      //disabled={isInvalid}
+                      //onClick={alert(this.state)}
                     >
                       Submit
                     </button>
