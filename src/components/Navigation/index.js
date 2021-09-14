@@ -25,6 +25,9 @@ class Navigation extends Component {
                     <li>
                         <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
                     </li>
+                    <li>
+                        <Link to={ROUTES.ADD_LIGHT}>Add Light</Link>
+                    </li>
                 </ul>
             </div>
         );

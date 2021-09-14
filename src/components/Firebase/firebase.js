@@ -1,19 +1,22 @@
-import app from "firebase/app";
 import "firebase/auth";
+import "firebase/database"
+import firebase from "firebase";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC5qLpRlcNMt6J7uF1Ss1CjsCG2PQUe_CA",
   authDomain: "iotstreetlamp.firebaseapp.com",
+  databaseURL: "https://iotstreetlamp-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "iotstreetlamp",
   storageBucket: "iotstreetlamp.appspot.com",
   messagingSenderId: "200888796350",
-  appId: "1:200888796350:web:7646ee79ee92da07350aef",
+  appId: "1:200888796350:web:7646ee79ee92da07350aef"
 };
+
+firebase.initializeApp(firebaseConfig);
 
 class Firebase {
   constructor() {
-    app.initializeApp(firebaseConfig);
-    this.auth = app.auth();
+    this.auth = firebase.auth();
   }
 
   doCreateUserWithEmailAndPassword = (email, password) =>
@@ -50,5 +53,9 @@ class Firebase {
       this.auth.currentUser.updatePassword(password);
   }
 }
+
+var database = firebase.database();
+
+export {database};
 
 export default Firebase;

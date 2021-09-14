@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import { FirebaseContext } from "../Firebase";
 import firebase from "firebase/app";
 import "firebase/auth";
-import { Redirect } from "react-router-dom";
-import * as ROUTES from './../../constants/routes';
-import SignIn from "../SignIn";
-import NavBar from "../NavBar";
-import Footer from "../Footer";
 
 const INITIAL_STATE = {
   email: "",
@@ -17,9 +12,6 @@ const INITIAL_STATE = {
 };
 
 class SignUp extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div style={{backgroundColor: '#4e73df'}}>

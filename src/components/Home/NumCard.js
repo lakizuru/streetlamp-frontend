@@ -5,7 +5,14 @@ class NumCard extends Component {
     return (
       <div className="col-md-6 col-xl-3 mb-4">
         <div className="card shadow border-start-primary py-2">
+        <a
+            //class="btn btn-primary btn-sm d-none d-sm-inline-block"
+            role="button"
+            href="/table"
+            style={{backgroundColor: 'white', textDecoration: 'none'}}
+          >
           <div className="card-body">
+          
             <div className="row align-items-center no-gutters">
               <div className="col me-2">
                 <div className={this.props.type}>
@@ -19,7 +26,9 @@ class NumCard extends Component {
                 <i className="fas fa-calendar fa-2x text-gray-300" />
               </div>
             </div>
+            
           </div>
+          </a>
         </div>
       </div>
     );

@@ -7,9 +7,6 @@ import * as ROUTES from '../../constants/routes';
 import compose from 'recompose/compose';
 
 class SignOutButtonBase extends Component {
-    constructor(props) {
-        super(props)
-    }
     onSignOut = event => {
       localStorage.clear();
         firebase.auth().signOut();
