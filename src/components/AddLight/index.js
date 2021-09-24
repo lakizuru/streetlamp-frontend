@@ -21,8 +21,7 @@ class AddLight extends Component {
       LDR: ldr,
       PIR: pir
     });
-    //alert("Light added to the system successfully!");
-    //window.location.reload();
+    alert("Light added to the system successfully!");
   }
 
   typePIR(){

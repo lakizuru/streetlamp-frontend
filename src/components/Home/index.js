@@ -8,9 +8,9 @@ class Home extends Component {
     super(props);
     this.state = {
       lights: [],
-      onLights: 0,
-      regLights: 0,
-      faults: 0,
+      onLights: [],
+      regLights: [],
+      faults: [],
       
       isLoading: true,
 
@@ -64,19 +64,19 @@ class Home extends Component {
   getLights() {
     database.ref('/Lights/').on('value', (snapshot)=> {
       let allLights = [];
-      let onLights = 0;
-      let regLights = 0;
-      let faults = 0;
+      let onLights = [];
+      let regLights = [];
+      let faults = [];
       snapshot.forEach(snap => {
         allLights.push(snap.val());
         if (snap.val().Status === "ON") {
-          onLights++;
+          onLights.push(snap.val())
         }
         if (snap.val().Registration) {
-          regLights++;
+          regLights.push(snap.val());
         }
         if (snap.val().Faulty === true) {
-          faults++;
+          faults.push(snap.val());
         }
       });
       this.setState({
@@ -150,17 +150,17 @@ class Home extends Component {
           <NumCard
             type="text-uppercase text-info fw-bold text-xs mb-1"
             title="Connected"
-            value={this.state.regLights}
+            value={this.state.regLights.length}
           />
           <NumCard
             type="text-uppercase text-success fw-bold text-xs mb-1"
             title="Active"
-            value={this.state.onLights}
+            value={this.state.onLights.length}
           />
           <NumCard
             type="text-uppercase text-warning fw-bold text-xs mb-1"
             title="Faulty"
-            value={this.state.faults}
+            value={this.state.faults.length}
           />
         </div>
         <div class="row">
