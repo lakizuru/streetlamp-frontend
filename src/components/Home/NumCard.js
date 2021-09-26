@@ -1,6 +1,15 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { database } from "../Firebase/firebase";
 
 class NumCard extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      data: this.props.data
+    }
+  }
+
   render() {
     return (
       <div className="col-md-6 col-xl-3 mb-4">
@@ -8,7 +17,7 @@ class NumCard extends Component {
         <a
             //class="btn btn-primary btn-sm d-none d-sm-inline-block"
             role="button"
-            href="/table"
+            //href="/table"
             style={{backgroundColor: 'white', textDecoration: 'none'}}
           >
           <div className="card-body">
