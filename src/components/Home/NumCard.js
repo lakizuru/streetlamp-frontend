@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { database } from "../Firebase/firebase";
 
 class NumCard extends Component {
   constructor(props){
@@ -17,22 +15,19 @@ class NumCard extends Component {
         <a
             //class="btn btn-primary btn-sm d-none d-sm-inline-block"
             role="button"
-            //href="/table"
+            href="/table"
             style={{backgroundColor: 'white', textDecoration: 'none'}}
           >
           <div className="card-body">
           
             <div className="row align-items-center no-gutters">
               <div className="col me-2">
-                <div className={this.props.type}>
-                  <span>{this.props.title}</span>
-                </div>
-                <div className="text-dark fw-bold h5 mb-0">
-                  <span>{this.props.value}</span>
+                <div>
+                  <b><span style={{fontSize: 20, color: this.props.color}}>{this.props.title}</span></b>
                 </div>
               </div>
               <div className="col-auto">
-                <i className="fas fa-calendar fa-2x text-gray-300" />
+              <b><span style={{fontSize: 30, color: this.props.color}}>{this.props.value}</span></b>
               </div>
             </div>
             

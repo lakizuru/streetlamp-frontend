@@ -20,9 +20,9 @@ class NavBar extends Component {
             </form>
             <div
               class="col-5"
-              styles={{ textAlign: "center", width: "215.078px" }}
+              styles={{ textAlign: "center", width: "215.078px"}}
             >
-              <div id="time"></div>
+              <b><div id="time" ></div></b>
             </div>
             <ul class="navbar-nav flex-nowrap ms-auto">
               <li class="nav-item dropdown d-sm-none no-arrow">

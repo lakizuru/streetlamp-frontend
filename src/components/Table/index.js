@@ -1,9 +1,50 @@
 import React, { Component } from "react";
+import { database } from "../Firebase/firebase";
 
 class Table extends Component {
   constructor(props) {
     super(props);
+    
+    this.state = {
+      lights: [],
+      onLights: [],
+      offLights: [],
+      faults: [],
+    }
 
+    this.getLights();
+
+  }
+
+  getLights() {
+    database.ref("/Lights/").on("value", (snapshot) => {
+      let allLights = []
+      let onLights = [];
+      let offLights = [];
+      let faults = [];
+      console.log(snapshot)
+      snapshot.forEach((snap) => {
+        allLights.push(snap.val())
+
+        /*
+        if (snap.val().Status === "ON") {
+          onLights.push(snap.val());
+        }
+        else if (snap.val().Status === "OFF") {
+          offLights.push(snap.val());
+        }
+        if (snap.val().Faulty === true) {
+          faults.push(snap.val());
+        }
+        */
+      });
+      this.setState({
+        allLights: allLights,
+        onLights: onLights,
+        offLights: offLights,
+        faults: faults,
+      });
+    });
   }
   
   render() {
@@ -36,7 +77,8 @@ class Table extends Component {
                     <th>Status</th>
                   </tr>
                 </thead>
-                <tbody />
+                <tbody>
+              </tbody>
                 <tfoot>
                   <tr>
                     <td><strong>Light</strong></td>

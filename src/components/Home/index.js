@@ -8,10 +8,8 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lights: [],
       onLights: [],
       offLights: [],
-      regLights: [],
       faults: [],
 
       isLoading: true,
@@ -63,31 +61,23 @@ class Home extends Component {
 
   getLights() {
     database.ref("/Lights/").on("value", (snapshot) => {
-      let allLights = [];
       let onLights = [];
       let offLights = [];
-      let regLights = [];
       let faults = [];
       snapshot.forEach((snap) => {
-        allLights.push(snap.val());
         if (snap.val().Status === "ON") {
           onLights.push(snap.val());
         }
         else if (snap.val().Status === "OFF") {
           offLights.push(snap.val());
         }
-        if (snap.val().Registration) {
-          regLights.push(snap.val());
-        }
         if (snap.val().Faulty === true) {
           faults.push(snap.val());
         }
       });
       this.setState({
-        lights: allLights,
         onLights: onLights,
         offLights: offLights,
-        regLights: regLights,
         faults: faults,
       });
     });
@@ -140,27 +130,27 @@ class Home extends Component {
               href="/add-light"
             >
               <i></i>
-              &nbsp;<b style={{ fontSize: 15 }}>💡Light+</b>
+              &nbsp;<b style={{ fontSize: 20 }}>💡Light+</b>
             </a>
           </div>
           <div class="row">
             <NumCard
-              type="text-uppercase text-info fw-bold text-xs mb-1"
+              color="blue"
               title="Connected"
-              value={this.state.regLights.length}
+              value={this.state.onLights.length + this.state.offLights.length}
             />
             <NumCard
-              type="text-uppercase text-success fw-bold text-xs mb-1"
+              color="lightgreen"
               title="Active"
               value={this.state.onLights.length}
             />
             <NumCard
-              type="text-uppercase text-primary fw-bold text-xs mb-1"
+              color="orange"
               title="Inactive"
               value={this.state.offLights.length}
             />
             <NumCard
-              type="text-uppercase text-warning fw-bold text-xs mb-1"
+              color="red"
               title="Faulty"
               value={this.state.faults.length}
             />
@@ -170,7 +160,7 @@ class Home extends Component {
               <div class="card shadow mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h6 class="text-primary fw-bold m-0">
-                    Power Usage (last 24 hours)
+                    Power Usage Average by Time
                   </h6>
                 </div>
                 <div class="card-body">
