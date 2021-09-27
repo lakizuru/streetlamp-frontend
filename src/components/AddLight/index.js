@@ -20,7 +20,8 @@ class AddLight extends Component {
       SerialNo: serialNo,
       Location: location,
       LDR: ldr,
-      PIR: pir
+      PIR: pir,
+      Status: "OFF"
     });
     alert("Light added to the system successfully!");
 
