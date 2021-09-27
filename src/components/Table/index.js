@@ -89,18 +89,22 @@ class Table extends Component {
                       <th>Location</th>
                       <th>Trigger Type</th>
                       <th>Status</th>
+                      <th>Warnings</th>
                     </tr>
                   </thead>
                   <tbody>
                     {this.state.lights &&
                       this.state.lights.map((light) => (
                         <tr key={light.SerialNo}>
-                          <td>{light.SerialNo}</td>
+                          <td><div>{light.SerialNo}</div></td>
                           <td>{light.Location}</td>
                           {light.LDR === 1 && <td>Vehicle 🚗</td>}
                           {light.PIR === 1 && <td>Human 🚶‍♂️</td>}
-                          {light.Status === "ON" && <td>ON</td>}
-                          {light.Status ===  "OFF" && <td>OFF</td>}
+                          {light.Status === "ON" && <td ><b style={{color: "green"}}>ON</b></td>}
+                          {light.Status ===  "OFF" && <td><b style={{color: "red"}}>OFF</b></td>}
+                          {light.Warning === "OFF" && <td><b style={{color: "green"}}>OFF</b></td>}
+                          {light.Warning ===  "Yellow" && <td><b style={{color: "orange"}}>Yellow</b></td>}
+                          {light.Warning ===  "Red" && <td><b style={{color: "red"}}>Red</b></td>}
                         </tr>
                         
                       ))}
@@ -111,6 +115,7 @@ class Table extends Component {
                       <th>Location</th>
                       <th>Trigger Type</th>
                       <th>Status</th>
+                      <th>Warnings</th>
                     </tr>
                   </tfoot>
                 </table>

@@ -173,6 +173,70 @@ class Home extends Component {
             <div class="col-lg-4 col-xl-3 col-xxl-3">
               <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
+                  <h6 class="text-primary fw-bold m-0">Weather</h6>
+                  <label className="switch">
+                    <input
+                      type="checkbox"
+                      onChange={this.handleGlobal}
+                      checked={this.state.global}
+                    />
+                    <div className="slider"></div>
+                  </label>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <span>ON/OFF</span>
+                    </div>
+                    <div class="col">
+                      <label className="switch">
+                        <input
+                          type="checkbox"
+                          checked={this.state.globalOn}
+                          onChange={this.handleGlobalOn}
+                        />
+                        <div className="slider"></div>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <span>Brightness</span>
+                    </div>
+                    <div class="col">
+                      <input
+                        class="form-range"
+                        id="brightSlider"
+                        type="range"
+                        value={this.state.globalBrightness}
+                        min="1"
+                        max="5"
+                        onChange={this.handleGlobalBrightness}
+                      ></input>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <span>Temperature</span>
+                    </div>
+                    <div class="col">
+                      <input
+                        class="form-range"
+                        id="tempSlider"
+                        type="range"
+                        value={this.state.globalColorTemp}
+                        min="1"
+                        max="5"
+                        onChange={this.handleGlobalColorTemp}
+                      ></input>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+
+              <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
                   <h6 class="text-primary fw-bold m-0">Manual Override</h6>
                   <label className="switch">
                     <input
@@ -233,7 +297,9 @@ class Home extends Component {
                   </div>
                 </div>
               </div>
+              
             </div>
+            
           </div>
         </div>
       );
