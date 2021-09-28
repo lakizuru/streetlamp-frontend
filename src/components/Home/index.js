@@ -165,7 +165,7 @@ class Home extends Component {
                   </h6>
                 </div>
                 <div class="card-body">
-                  <div class="chart-area">
+                  <div class="chart-area" style={{height: 400}}>
                     <PowerChart />
                   </div>
                 </div>
@@ -178,11 +178,9 @@ class Home extends Component {
                 </div>
                 <div class="card-body">
                 <Weather/>
-
                 </div>
               </div>
               <hr/>
-
               <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h6 class="text-primary fw-bold m-0">Manual Override</h6>

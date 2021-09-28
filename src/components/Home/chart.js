@@ -35,7 +35,7 @@ class PowerChart extends Component{
                   options={this.state.options}
                   series={this.state.series}
                   type="area"
-                  height="330"
+                  height="400"
                 />
               </div>
             </div>

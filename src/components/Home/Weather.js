@@ -28,14 +28,16 @@ export default function Weather() {
     console.log(data);
   }, [lat, long]);
 
-  if (typeof data.main == 'undefined') {
+  if (typeof data.main == "undefined") {
     return <div>Loading</div>;
   } else {
     return (
-      <div className="main">
+      <div>
         <div className="row">
           <div className="col">
-            <p className="header">{data.name}</p>
+            <p className="header">
+              <b>{data.name}</b>
+            </p>
           </div>
           <div className="col">
             <p className="description">{data.weather[0].main}</p>
@@ -47,20 +49,26 @@ export default function Weather() {
           </p>
         </div>
 
-        <div className="flex">
-          <p className="temp">Temprature: {data.main.temp} &deg;C</p>
-          <p className="temp">Humidity: {data.main.humidity} %</p>
+        <div className="row">
+          <div className="col">
+            <p className="temp">🌡 {data.main.temp} &deg;C</p>
+          </div>
+          <div className="col">
+            <p className="temp">💧 {data.main.humidity} %</p>
+          </div>
         </div>
 
-        <div className="flex">
-          <p className="sunrise-sunset">
-            Sunrise:{" "}
-            {new Date(data.sys.sunrise * 1000).toLocaleTimeString("en-IN")}
-          </p>
-          <p className="sunrise-sunset">
-            Sunset:{" "}
-            {new Date(data.sys.sunset * 1000).toLocaleTimeString("en-IN")}
-          </p>
+        <div className="row">
+          <div className="col">
+            <p className="sunrise-sunset">
+              🌄 {new Date(data.sys.sunrise * 1000).toLocaleTimeString("en-IN")}
+            </p>
+          </div>
+          <div className="col">
+            <p className="sunrise-sunset">
+              🌅 {new Date(data.sys.sunset * 1000).toLocaleTimeString("en-IN")}
+            </p>
+          </div>
         </div>
       </div>
     );
