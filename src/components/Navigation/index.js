@@ -28,6 +28,9 @@ class Navigation extends Component {
                     <li>
                         <Link to={ROUTES.ADD_LIGHT}>Add Light</Link>
                     </li>
+                    <li>
+                        <Link to={ROUTES.SETTINGS}>Settings</Link>
+                    </li>
                 </ul>
             </div>
         );
