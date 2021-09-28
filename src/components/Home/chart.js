@@ -14,18 +14,14 @@ class PowerChart extends Component{
                 curve: 'smooth',
               },
             xaxis: {
-              categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+              categories: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
             }
           },
           series: [
             {
               name: "Average",
-              data: [30, 40, 45, 50, 49, 60, 70, 91],
+              data: [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ],
             },
-            {
-                name: "Last 24h",
-                data: [10, 20, 30, 45, 67, 46, 37, 86]
-              }
           ]
         };
       }
@@ -39,7 +35,7 @@ class PowerChart extends Component{
                   options={this.state.options}
                   series={this.state.series}
                   type="area"
-                  height="330"
+                  height="400"
                 />
               </div>
             </div>

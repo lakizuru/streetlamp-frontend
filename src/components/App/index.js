@@ -10,6 +10,7 @@ import AddLight from '../AddLight';
 import * as ROUTES from '../../constants/routes';
 import Landing from '../Landing';
 import Table from '../Table';
+import Settings from '../Settings/Settings';
 
 class App extends Component {
   
@@ -23,6 +24,7 @@ class App extends Component {
           <Route exact path={ROUTES.LANDING} component={Landing}/>
           <ProtectedRoute exact path={ROUTES.ADD_LIGHT} component={AddLight}/>
           <ProtectedRoute exact path={ROUTES.TABLE} component={Table}/>
+          <ProtectedRoute exact path={ROUTES.SETTINGS} component={Settings}/>
         </Switch>
       </Router>
     );
