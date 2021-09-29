@@ -37,7 +37,6 @@ class NavBar extends Component {
     if (this.state.isLoading) {
       return <div>Loading</div>;
     } else {
-      console.log(this.state.displayName);
       return (
         <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
           <div class="container-fluid">
@@ -79,9 +78,6 @@ class NavBar extends Component {
                   </form>
                 </div>
               </li>
-              <div class="col-5">
-                <b>Hi!, {this.state.displayName}</b>
-              </div>
 
               <div class="d-none d-sm-block topbar-divider"></div>
               <li class="nav-item dropdown no-arrow">
@@ -96,7 +92,7 @@ class NavBar extends Component {
                       class="d-none d-lg-inline me-2 text-gray-600 small"
                       style={{ fontWeight: "bold" }}
                     >
-                      Menu
+                      Hi!, {this.state.displayName}
                     </span>
                   </a>
                   <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
