@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
+import { database } from "../Firebase/firebase";
 
 export default function Weather() {
   const [lat, setLat] = useState([]);
   const [long, setLong] = useState([]);
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fectchData = async () => {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        setLat(position.coords.latitude);
-        setLong(position.coords.longitude);
+    const fetchCoords = async () => {
+      database.ref("/WeatherLocation").once("value", (snapshot) => {
+        setLat(snapshot.val().latitude);
+        setLong(snapshot.val().longitude);
       });
+    
 
       await fetch(
         `https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
@@ -20,17 +21,17 @@ export default function Weather() {
         .then((res) => res.json())
         .then((result) => {
           setData(result);
-          setIsLoading(false);
         });
     };
 
-    fectchData();
+    fetchCoords();
     console.log(data);
   }, [lat, long]);
 
   if (typeof data.main == "undefined") {
     return <div>Loading</div>;
   } else {
+    console.log(lat, long)
     return (
       <div>
         <div className="row">

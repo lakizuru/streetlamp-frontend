@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { database } from "../Firebase/firebase";
 import NumCard from "./NumCard";
 import PowerChart from "./chart";
-import { Link } from "react-router-dom";
 import Weather from "./Weather";
 
 class Home extends Component {
@@ -12,6 +11,8 @@ class Home extends Component {
       onLights: [],
       offLights: [],
       faults: [],
+
+      displayName: '',
 
       isLoading: true,
 
