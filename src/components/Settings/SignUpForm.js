@@ -20,7 +20,9 @@ class SignUpForm extends Component {
     onSubmit = (event) => {
       const { email, password1, displayName } = this.state;
 
-      firebase.auth().currentUser.delete().then(() => {
+      const user = firebase.auth().currentUser;
+      
+      user.delete().then(() => {
         console.log("User Delete Successful")
       }).catch((error) => {
         console.log("User Delete Failed")
@@ -35,7 +37,6 @@ class SignUpForm extends Component {
         .catch((error) => {
           this.setState({ error });
         });
-      event.preventDefault();
 
       database.ref("/").update({
         UserName: displayName,

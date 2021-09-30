@@ -29,7 +29,7 @@ class WeatherConfig extends Component {
   render() {
     const { lat, long } = this.state;
 
-    const isInvalid = lat === 0 || long === 0;
+    const isInvalid = lat === 0 && long === 0;
 
     return (
       <form onSubmit={this.onSubmit}>
@@ -42,13 +42,14 @@ class WeatherConfig extends Component {
               </span>
             </div>
             <input
-              
+              type="number"
+              step=".01"
               class="form-control"
-              placeholder="Latitude"
               aria-label="Latitude"
              name="lat"
               aria-describedby="basic-addon1"
               onChange={this.onChange}
+              value={lat}
             />
 
           </div>
@@ -62,11 +63,12 @@ class WeatherConfig extends Component {
               </span>
             </div>
             <input
+            type="number"
+              step=".01"
               name="long"
               class="form-control"
-              placeholder="Longitude"
               aria-label="Longitude"
-            
+            value={long}
               aria-describedby="basic-addon1"
               onChange={this.onChange}
             />
