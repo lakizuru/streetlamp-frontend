@@ -23,9 +23,6 @@ class Navigation extends Component {
                         <Link to={ROUTES.ADMIN}>Admin</Link>
                     </li>
                     <li>
-                        <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-                    </li>
-                    <li>
                         <Link to={ROUTES.ADD_LIGHT}>Add Light</Link>
                     </li>
                     <li>

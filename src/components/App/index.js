@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import SignIn from '../SignIn';
 import Home from '../Home';
-import SignUp from '../SignUp';
 import ProtectedRoute from '../ProtectedRoute';
 import AddLight from '../AddLight';
 
@@ -20,7 +19,6 @@ class App extends Component {
         <Switch>
           <ProtectedRoute path={ROUTES.HOME} component={Home} />
           <Route exact path={ROUTES.SIGN_IN} component={SignIn}/>
-          <ProtectedRoute path={ROUTES.SIGN_UP} component={SignUp}/>
           <Route exact path={ROUTES.LANDING} component={Landing}/>
           <ProtectedRoute exact path={ROUTES.ADD_LIGHT} component={AddLight}/>
           <ProtectedRoute exact path={ROUTES.TABLE} component={Table}/>
