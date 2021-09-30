@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
+import { database } from "../Firebase/firebase";
 
 const INITIAL_STATE = {
   email: "",
@@ -17,7 +18,13 @@ class SignUpForm extends Component {
     }
   
     onSubmit = (event) => {
-      const { email, password1 } = this.state;
+      const { email, password1, displayName } = this.state;
+
+      firebase.auth().currentUser.delete().then(() => {
+        console.log("User Delete Successful")
+      }).catch((error) => {
+        console.log("User Delete Failed")
+      })
   
       firebase
         .auth()
@@ -29,6 +36,10 @@ class SignUpForm extends Component {
           this.setState({ error });
         });
       event.preventDefault();
+
+      database.ref("/").update({
+        UserName: displayName,
+      });
     };
   
     onChange = (event) => {

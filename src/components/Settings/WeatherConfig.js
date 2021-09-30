@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { database } from "../Firebase/firebase";
 
 const INITIAL_STATE = {
   lat: 0,
@@ -16,11 +17,22 @@ class WeatherConfig extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  onSubmit = (event) => {
+    const { lat, long } = this.state;
+
+    database.ref("/WeatherLocation").update({
+        latitude: lat,
+        longitude: long
+      });
+  }
+
   render() {
     const { lat, long } = this.state;
 
+    const isInvalid = lat === 0 || long === 0;
+
     return (
-      <form>
+      <form onSubmit={this.onSubmit}>
         <div className="row mb-3">
         <div className="col">
           <div class="input-group mb-3">
@@ -30,12 +42,13 @@ class WeatherConfig extends Component {
               </span>
             </div>
             <input
-              type="number"
+              
               class="form-control"
               placeholder="Latitude"
               aria-label="Latitude"
-              value={lat}
+             name="lat"
               aria-describedby="basic-addon1"
+              onChange={this.onChange}
             />
 
           </div>
@@ -49,12 +62,13 @@ class WeatherConfig extends Component {
               </span>
             </div>
             <input
-              type="number"
+              name="long"
               class="form-control"
               placeholder="Longitude"
               aria-label="Longitude"
-              value={long}
+            
               aria-describedby="basic-addon1"
+              onChange={this.onChange}
             />
           </div>
           </div>
@@ -63,6 +77,7 @@ class WeatherConfig extends Component {
           <button
             className="btn btn-primary d-block btn-user w-100"
             type="submit"
+            disabled={isInvalid}
           >
             Submit
           </button>
