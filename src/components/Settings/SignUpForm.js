@@ -20,14 +20,8 @@ class SignUpForm extends Component {
     onSubmit = (event) => {
       const { email, password1, displayName } = this.state;
 
-      const user = firebase.auth().currentUser;
-      
-      user.delete().then(() => {
-        console.log("User Delete Successful")
-      }).catch((error) => {
-        console.log("User Delete Failed")
-      })
-  
+      firebase.auth().currentUser.delete();
+
       firebase
         .auth()
         .createUserWithEmailAndPassword(email, password1)
