@@ -27,22 +27,26 @@ class Table extends Component {
     this.state.isLoading = false;
   }
 
-  deleteLight(light){
-    let del = window.confirm("Delete " + light + "?")
+  deleteLight(light) {
+    let del = window.confirm("Delete " + light + "?");
 
-    if(del){
-      database.ref("/Lights/"+light).remove();
+    if (del) {
+      database.ref("/Lights/" + light).remove();
     }
 
-    return(
+    return (
       <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
-  </div>
-    )
+        <span class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+      </div>
+    );
   }
 
-  
+  setWarning(light, type){
+    database.ref("/Lights/" + light).update({
+      Warning: type,
+    });
+  }
 
   render() {
     if (this.state.isLoading) {
@@ -113,17 +117,67 @@ class Table extends Component {
                     {this.state.lights &&
                       this.state.lights.map((light) => (
                         <tr key={light.SerialNo}>
-                          <td><div onClick={() => this.deleteLight(light.SerialNo)}>{light.SerialNo}</div></td>
+                          <td>
+                            <div
+                              onClick={() => this.deleteLight(light.SerialNo)}
+                            >
+                              {light.SerialNo}
+                            </div>
+                          </td>
                           <td>{light.Location}</td>
                           {light.LDR === 1 && <td>Vehicle 🚗</td>}
                           {light.PIR === 1 && <td>Human 🚶‍♂️</td>}
-                          {light.Status === "ON" && <td ><b style={{color: "green"}}>ON</b></td>}
-                          {light.Status ===  "OFF" && <td><b style={{color: "red"}}>OFF</b></td>}
-                          {light.Warning === "OFF" && <td><b style={{color: "green"}}>OFF</b></td>}
-                          {light.Warning ===  "Yellow" && <td><b style={{color: "orange"}}>Yellow</b></td>}
-                          {light.Warning ===  "Red" && <td><b style={{color: "red"}}>Red</b></td>}
+                          {light.Status === "ON" && (
+                            <td>
+                              <b style={{ color: "green" }}>ON</b>
+                            </td>
+                          )}
+                          {light.Status === "OFF" && (
+                            <td>
+                              <b style={{ color: "red" }}>OFF</b>
+                            </td>
+                          )}
+                          <td>
+                            <ul className="pagination">
+                              <li
+                                className={
+                                  (light.Warning === "OFF" &&
+                                    "page-item active") ||
+                                  (light.Warning !== "OFF" && "page-item")
+                                }
+                                onClick={() => this.setWarning(light.SerialNo, "OFF")}
+                              >
+                                <a className="page-link" href="#">
+                                  OFF
+                                </a>
+                              </li>
+                              <li
+                                className={
+                                  (light.Warning === "LOW" &&
+                                    "page-item active") ||
+                                  (light.Warning !== "LOW" && "page-item")
+                                }
+                                onClick={() => this.setWarning(light.SerialNo, "LOW")}
+                              >
+                                <a className="page-link" href="#">
+                                  LOW
+                                </a>
+                              </li>
+                              <li
+                                className={
+                                  (light.Warning === "HIGH" &&
+                                    "page-item active") ||
+                                  (light.Warning !== "HIGH" && "page-item")
+                                }
+                                onClick={() => this.setWarning(light.SerialNo, "HIGH")}
+                              >
+                                <a className="page-link" href="#">
+                                  HIGH
+                                </a>
+                              </li>
+                            </ul>
+                          </td>
                         </tr>
-                        
                       ))}
                   </tbody>
                   <tfoot>
@@ -136,49 +190,6 @@ class Table extends Component {
                     </tr>
                   </tfoot>
                 </table>
-              </div>
-              <div className="row">
-                <div className="col-md-6 align-self-center">
-                  <p
-                    id="dataTable_info"
-                    className="dataTables_info"
-                    role="status"
-                    aria-live="polite"
-                  >
-                    Showing 1 to 10 of 27
-                  </p>
-                </div>
-                <div className="col-md-6">
-                  <nav className="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                    <ul className="pagination">
-                      <li className="page-item disabled">
-                        <a className="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">«</span>
-                        </a>
-                      </li>
-                      <li className="page-item active">
-                        <a className="page-link" href="#">
-                          1
-                        </a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" href="#">
-                          2
-                        </a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" href="#">
-                          3
-                        </a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">»</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
               </div>
             </div>
           </div>
