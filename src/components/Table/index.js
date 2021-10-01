@@ -27,6 +27,23 @@ class Table extends Component {
     this.state.isLoading = false;
   }
 
+  deleteLight(light){
+    let del = window.confirm("Delete " + light + "?")
+
+    if(del){
+      database.ref("/Lights/"+light).remove();
+    }
+
+    return(
+      <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+    )
+  }
+
+  
+
   render() {
     if (this.state.isLoading) {
       return <span>Loading... Please wait</span>;
@@ -96,7 +113,7 @@ class Table extends Component {
                     {this.state.lights &&
                       this.state.lights.map((light) => (
                         <tr key={light.SerialNo}>
-                          <td><div>{light.SerialNo}</div></td>
+                          <td><div onClick={() => this.deleteLight(light.SerialNo)}>{light.SerialNo}</div></td>
                           <td>{light.Location}</td>
                           {light.LDR === 1 && <td>Vehicle 🚗</td>}
                           {light.PIR === 1 && <td>Human 🚶‍♂️</td>}
