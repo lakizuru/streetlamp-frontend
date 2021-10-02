@@ -13,7 +13,6 @@ export default function Weather() {
         setLat(snapshot.val().latitude);
         setLong(snapshot.val().longitude);
       });
-    
 
       await fetch(
         `https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
@@ -31,23 +30,29 @@ export default function Weather() {
   if (typeof data.main == "undefined") {
     return <div>Loading</div>;
   } else {
-    console.log(lat, long)
     return (
       <div>
         <div className="row">
           <div className="col">
-            <p className="header">
+            <p className="row">
               <b>{data.name}</b>
             </p>
+
+            <div className="row">
+              <p className="day">
+                {moment().format("dddd")}, <span>{moment().format("LL")}</span>
+              </p>
+            </div>
           </div>
-          <div className="col">
-            <p className="description">{data.weather[0].main}</p>
-          </div>
-        </div>
-        <div className="flex">
-          <p className="day">
-            {moment().format("dddd")}, <span>{moment().format("LL")}</span>
-          </p>
+
+          <div
+            className="col"
+            style={{
+              backgroundImage: 'url(http://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png)',
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+            }}
+          />
         </div>
 
         <div className="row">
