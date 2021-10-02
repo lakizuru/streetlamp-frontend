@@ -60,13 +60,13 @@ class Table extends Component {
               <table className="table my-0" id="dataTable">
                   <thead>
                     <tr>
-                      <th>Light</th>
-                      <th>Location</th>
-                      <th>Trigger Type</th>
-                      <th>Status</th>
-                      <th>Defects</th>
-                      <th>Warnings</th>
-                      <th></th>
+                      <th style={{width: '15%'}}>Light</th>
+                      <th style={{width: '20%'}}>Location</th>
+                      <th style={{width: '15%'}}>Trigger Type</th>
+                      <th style={{width: '15%'}}>Status</th>
+                      <th style={{width: '15%'}}>Defects</th>
+                      <th style={{width: '20%'}}>Warnings</th>
+                      <th style={{width: '10%'}}></th>
                     </tr>
                   </thead>
                   </table>
@@ -81,35 +81,35 @@ class Table extends Component {
                     {this.state.lights &&
                       this.state.lights.map((light) => (
                         <tr key={light.SerialNo}>
-                          <td>
+                          <td  style={{width: '15%'}}>
                             <div>
                               {light.SerialNo}
                             </div>
                           </td>
-                          <td>{light.Location}</td>
-                          {light.LDR === 1 && <td>Vehicle 🚗</td>}
-                          {light.PIR === 1 && <td>Human 🚶‍♂️</td>}
+                          <td  style={{width: '20%'}}>{light.Location}</td>
+                          {light.LDR === 1 && <td style={{width: '15%'}}>Vehicle 🚗</td>}
+                          {light.PIR === 1 && <td style={{width: '15%'}}>Human 🚶‍♂️</td>}
                           {light.Status === "ON" && (
-                            <td>
+                            <td style={{width: '15%'}}>
                               <b style={{ color: "green" }}>ON</b>
                             </td>
                           )}
                           {light.Status === "OFF" && (
-                            <td>
+                            <td style={{width: '15%'}}>
                               <b style={{ color: "red" }}>OFF</b>
                             </td>
                           )}
                           {light.Defect === false && (
-                            <td>
+                            <td  style={{width: '15%'}}>
                               <b style={{ color: "green" }}>NONE</b>
                             </td>
                           )}
                           {light.Defect === true && (
-                            <td>
+                            <td style={{width: '15%'}}>
                               <b style={{ color: "red" }}>DEFECTIVE</b>
                             </td>
                           )}
-                          <td>
+                          <td style={{width: '20%'}}>
                             <ul className="pagination">
                               <li
                                 className={
@@ -150,7 +150,7 @@ class Table extends Component {
                             </ul>
                           </td>
                           <td>
-                            <div
+                            <div style={{width: '10%'}}
                               onClick={() => this.deleteLight(light.SerialNo)}
                             ><span style={{fontSize: 25}}>🗑</span>
                               
