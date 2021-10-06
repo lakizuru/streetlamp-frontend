@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { database } from "../Firebase/firebase";
 import NumCard from "./NumCard";
-import PowerChart from "./chart";
+import Map from "./Map";
 import Weather from "./Weather";
 
 class Home extends Component {
@@ -167,7 +167,7 @@ class Home extends Component {
                 </div>
                 <div class="card-body">
                   <div class="chart-area" style={{height: 400}}>
-                    <PowerChart />
+                    <Map/>
                   </div>
                 </div>
               </div>

@@ -28,7 +28,7 @@ export default function Weather() {
   }, [lat, long]);
 
   if (typeof data.main == "undefined") {
-    return <div>Loading</div>;
+    return <div>Loading</div>
   } else {
     return (
       <div>
