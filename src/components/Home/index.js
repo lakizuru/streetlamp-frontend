@@ -73,7 +73,7 @@ class Home extends Component {
         else if (snap.val().Status === "OFF") {
           offLights.push(snap.val());
         }
-        if (snap.val().Faulty === true) {
+        if (snap.val().Defect === true) {
           faults.push(snap.val());
         }
       });
@@ -153,7 +153,7 @@ class Home extends Component {
             />
             <NumCard
               color="red"
-              title="Faulty"
+              title="Faults"
               value={this.state.faults.length}
             />
           </div>
