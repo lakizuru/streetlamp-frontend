@@ -29,13 +29,6 @@ class SignIn extends Component {
                       </div>
 
                       <SignInForm/>
-
-                      <div className="text-center">
-                        <a className="small" href="forgot-password.html">
-                          Forgot Password?
-                        </a>
-                      </div>
-                      <div className="text-center" />
                     </div>
                   </div>
                 </div>
@@ -116,23 +109,6 @@ class SignInFormBase extends Component {
             onChange={this.onChange}
           />
         </div>
-        <div className="mb-3">
-          <div className="custom-control custom-checkbox small">
-            <div className="form-check">
-              <input
-                className="form-check-input custom-control-input"
-                type="checkbox"
-                id="formCheck-1"
-              />
-              <label
-                className="form-check-label custom-control-label"
-                htmlFor="formCheck-1"
-              >
-                Remember Me
-              </label>
-            </div>
-          </div>
-        </div>
         <button
           className="btn btn-primary d-block btn-user w-100"
           type="submit"
@@ -140,7 +116,7 @@ class SignInFormBase extends Component {
         >
           Login
         </button>
-        <hr />
+       
         {error && <p style={{color: 'red'}}>{error.message}</p>}
       </form>
     );

@@ -142,7 +142,7 @@ class Home extends Component {
               value={this.state.onLights.length + this.state.offLights.length}
             />
             <NumCard
-              color="lightgreen"
+              color="green"
               title="Active"
               value={this.state.onLights.length}
             />

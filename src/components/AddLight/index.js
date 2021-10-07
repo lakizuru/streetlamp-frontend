@@ -44,18 +44,12 @@ class AddLight extends Component {
   render() {
     return (
       <div className="container">
-        <div className="card shadow-lg o-hidden border-0 my-5">
-          <div className="card-body p-0">
+      <div className="row justify-content-center">
+        <div className="card shadow o-hidden border-0 my-5" style={{width:'50%'}}>
+
             <div className="row">
-              <div className="col-lg-5 d-none d-lg-flex">
-                <div
-                  className="flex-grow-1 bg-register-image"
-                  style={{
-                    backgroundImage: 'url("assets/img/dogs/image2.jpeg")',
-                  }}
-                />
-              </div>
-              <div className="col-lg-7">
+              
+              <div className="col">
                 <div className="p-5">
                   <div className="text-center">
                     <h4 className="text-dark mb-4">Add Light</h4>
@@ -136,7 +130,7 @@ class AddLight extends Component {
                 </div>
               </div>
             </div>
-          </div>
+</div>
         </div>
       </div>
     );
