@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { database } from "../Firebase/firebase";
-import * as SECRETS from '../../secrets';
+import * as SECRETS from '../../constants/secrets';
 
 export default function Map() {
   const [lat, setLat] = useState([]);

@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 /.env
-/src/secrets.js
+/src/constants/secrets.js
 
 # testing
 /coverage

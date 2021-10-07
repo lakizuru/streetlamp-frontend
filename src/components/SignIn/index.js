@@ -14,71 +14,12 @@ class SignIn extends Component {
       <div style={{backgroundColor: '#4e73df'}}>
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-md-9 col-lg-12 col-xl-10">
+          <div className="col-lg-5">
             <div className="card shadow-lg o-hidden border-0 my-5">
               <div className="card-body p-0">
                 <div className="row">
-                  <div className="col-lg-6 d-none d-lg-flex">
-                    <div
-                      className="carousel slide"
-                      data-bs-ride="carousel"
-                      id="carousel-1"
-                    >
-                      <div className="carousel-inner">
-                        <div className="carousel-item active">
-                          <img
-                            className="w-100 d-block"
-                            src="assets/img/onio-smart-street-lighting.jpg"
-                            alt="Slide "
-                          />
-                        </div>
-                        <div className="carousel-item">
-                          <img
-                            className="w-100 d-block"
-                            src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"
-                            alt="Slide"
-                          />
-                        </div>
-                        <div className="carousel-item">
-                          <img
-                            className="w-100 d-block"
-                            src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"
-                            alt="Slide"
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <a
-                          className="carousel-control-prev"
-                          href="#carousel-1"
-                          role="button"
-                          data-bs-slide="prev"
-                        >
-                          <span className="carousel-control-prev-icon" />
-                          <span className="visually-hidden">Previous</span>
-                        </a>
-                        <a
-                          className="carousel-control-next"
-                          href="#carousel-1"
-                          role="button"
-                          data-bs-slide="next"
-                        >
-                          <span className="carousel-control-next-icon" />
-                          <span className="visually-hidden">Next</span>
-                        </a>
-                      </div>
-                      <ol className="carousel-indicators">
-                        <li
-                          data-bs-target="#carousel-1"
-                          data-bs-slide-to={0}
-                          className="active"
-                        />
-                        <li data-bs-target="#carousel-1" data-bs-slide-to={1} />
-                        <li data-bs-target="#carousel-1" data-bs-slide-to={2} />
-                      </ol>
-                    </div>
-                  </div>
-                  <div className="col-lg-6">
+                  
+                  <div className="col">
                     <div className="p-5">
                       <h1 align="center">
                         <strong>Smart StreetLamp Portal</strong>
