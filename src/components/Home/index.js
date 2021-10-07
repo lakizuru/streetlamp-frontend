@@ -162,7 +162,7 @@ class Home extends Component {
               <div class="card shadow mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h6 class="text-primary fw-bold m-0">
-                    Power Usage Average by Time
+                    Location
                   </h6>
                 </div>
                 <div class="card-body">

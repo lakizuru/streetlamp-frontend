@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { database } from "../Firebase/firebase";
+import * as SECRETS from '../../secrets';
 
 export default function Map() {
   const [lat, setLat] = useState([]);
@@ -18,6 +19,7 @@ export default function Map() {
   if (lat == undefined || long == undefined) {
     return <div>Loading</div>;
   } else {
+    let url = "https://www.google.com/maps/embed/v1/view?key=" + SECRETS.GOOGLE_MAP_API_KEY + "&center=" + lat + "," + long + "&zoom=14e";
     return (
       <div className="app">
         <div className="row">
@@ -28,7 +30,7 @@ export default function Map() {
             scrolling="no"
             marginheight="0"
             marginwidth="0"
-            src="https://maps.google.com/maps?q=kurunegala&hl=es&z=14&amp;output=embed"
+            src={url}
           />
         </div>
       </div>
