@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { database } from "../Firebase/firebase";
 import NumCard from "./NumCard";
-import PowerChart from "./chart";
+import Map from "./Map";
 import Weather from "./Weather";
 
 class Home extends Component {
@@ -73,7 +73,7 @@ class Home extends Component {
         else if (snap.val().Status === "OFF") {
           offLights.push(snap.val());
         }
-        if (snap.val().Faulty === true) {
+        if (snap.val().Defect === true) {
           faults.push(snap.val());
         }
       });
@@ -153,7 +153,7 @@ class Home extends Component {
             />
             <NumCard
               color="red"
-              title="Faulty"
+              title="Faults"
               value={this.state.faults.length}
             />
           </div>
@@ -162,12 +162,12 @@ class Home extends Component {
               <div class="card shadow mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h6 class="text-primary fw-bold m-0">
-                    Power Usage Average by Time
+                    Location
                   </h6>
                 </div>
                 <div class="card-body">
                   <div class="chart-area" style={{height: 400}}>
-                    <PowerChart />
+                    <Map/>
                   </div>
                 </div>
               </div>

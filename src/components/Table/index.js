@@ -28,18 +28,11 @@ class Table extends Component {
   }
 
   deleteLight(light) {
-    let del = window.confirm("Delete " + light + "?");
+    let del = window.confirm("🗑 Delete " + light + "?");
 
     if (del) {
       database.ref("/Lights/" + light).remove();
     }
-
-    return (
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Some text in the Modal..</p>
-      </div>
-    );
   }
 
   setWarning(light, type){
@@ -61,134 +54,111 @@ class Table extends Component {
             </div>
             <div className="card-body">
               <div className="row">
-                <div className="col-md-6 text-nowrap">
-                  <div
-                    id="dataTable_length"
-                    className="dataTables_length"
-                    aria-controls="dataTable"
-                  >
-                    <label className="form-label">
-                      Show&nbsp;
-                      <select className="d-inline-block form-select form-select-sm">
-                        <option value={10} selected>
-                          10
-                        </option>
-                        <option value={25}>25</option>
-                        <option value={50}>50</option>
-                        <option value={100}>100</option>
-                      </select>
-                      &nbsp;
-                    </label>
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div
-                    className="text-md-end dataTables_filter"
-                    id="dataTable_filter"
-                  >
-                    <label className="form-label">
-                      <input
-                        type="search"
-                        className="form-control form-control-sm"
-                        aria-controls="dataTable"
-                        placeholder="Search"
-                      />
-                    </label>
-                  </div>
-                </div>
+                
+                
               </div>
-              <div
+              <table className="table my-0" id="dataTable">
+                  <thead>
+                    <tr>
+                      <th style={{width: '15%'}}>Light</th>
+                      <th style={{width: '20%'}}>Location</th>
+                      <th style={{width: '15%'}}>Trigger Type</th>
+                      <th style={{width: '15%'}}>Status</th>
+                      <th style={{width: '15%'}}>Defects</th>
+                      <th style={{width: '20%'}}>Warnings</th>
+                      <th style={{width: '10%'}}></th>
+                    </tr>
+                  </thead>
+                  </table>
+              <div style={{overflowY: 'scroll', height:'400px' }}
                 className="table-responsive table mt-2"
                 id="dataTable"
                 role="grid"
                 aria-describedby="dataTable_info"
               >
                 <table className="table my-0" id="dataTable">
-                  <thead>
-                    <tr>
-                      <th>Light</th>
-                      <th>Location</th>
-                      <th>Trigger Type</th>
-                      <th>Status</th>
-                      <th>Warnings</th>
-                    </tr>
-                  </thead>
                   <tbody>
                     {this.state.lights &&
                       this.state.lights.map((light) => (
                         <tr key={light.SerialNo}>
-                          <td>
-                            <div
-                              onClick={() => this.deleteLight(light.SerialNo)}
-                            >
+                          <td  style={{width: '15%'}}>
+                            <div>
                               {light.SerialNo}
                             </div>
                           </td>
-                          <td>{light.Location}</td>
-                          {light.LDR === 1 && <td>Vehicle 🚗</td>}
-                          {light.PIR === 1 && <td>Human 🚶‍♂️</td>}
+                          <td  style={{width: '20%'}}>{light.Location}</td>
+                          {light.LDR === 1 && <td style={{width: '15%'}}>Vehicle 🚗</td>}
+                          {light.PIR === 1 && <td style={{width: '15%'}}>Human 🚶‍♂️</td>}
                           {light.Status === "ON" && (
-                            <td>
+                            <td style={{width: '15%'}}>
                               <b style={{ color: "green" }}>ON</b>
                             </td>
                           )}
                           {light.Status === "OFF" && (
-                            <td>
+                            <td style={{width: '15%'}}>
                               <b style={{ color: "red" }}>OFF</b>
                             </td>
                           )}
-                          <td>
+                          {light.Defect === false && (
+                            <td  style={{width: '15%'}}>
+                              <b style={{ color: "green" }}>NONE</b>
+                            </td>
+                          )}
+                          {light.Defect === true && (
+                            <td style={{width: '15%'}}>
+                              <b style={{ color: "red" }}>DEFECTIVE</b>
+                            </td>
+                          )}
+                          <td style={{width: '20%'}}>
                             <ul className="pagination">
                               <li
                                 className={
-                                  (light.Warning === "OFF" &&
+                                  (light.Warning === 0 &&
                                     "page-item active") ||
-                                  (light.Warning !== "OFF" && "page-item")
+                                  (light.Warning !== 0 && "page-item")
                                 }
-                                onClick={() => this.setWarning(light.SerialNo, "OFF")}
+                                onClick={() => this.setWarning(light.SerialNo, 0)}
                               >
-                                <a className="page-link" href="#">
+                                <a className="page-link">
                                   OFF
                                 </a>
                               </li>
                               <li
                                 className={
-                                  (light.Warning === "LOW" &&
+                                  (light.Warning === 1 &&
                                     "page-item active") ||
-                                  (light.Warning !== "LOW" && "page-item")
+                                  (light.Warning !== 1 && "page-item")
                                 }
-                                onClick={() => this.setWarning(light.SerialNo, "LOW")}
+                                onClick={() => this.setWarning(light.SerialNo, 1)}
                               >
-                                <a className="page-link" href="#">
+                                <a className="page-link">
                                   LOW
                                 </a>
                               </li>
                               <li
                                 className={
-                                  (light.Warning === "HIGH" &&
+                                  (light.Warning === 2 &&
                                     "page-item active") ||
-                                  (light.Warning !== "HIGH" && "page-item")
+                                  (light.Warning !== 2 && "page-item")
                                 }
-                                onClick={() => this.setWarning(light.SerialNo, "HIGH")}
+                                onClick={() => this.setWarning(light.SerialNo, 2)}
                               >
-                                <a className="page-link" href="#">
+                                <a className="page-link">
                                   HIGH
                                 </a>
                               </li>
                             </ul>
                           </td>
+                          <td>
+                            <div style={{width: '10%'}}
+                              onClick={() => this.deleteLight(light.SerialNo)}
+                            ><span style={{fontSize: 25}}>🗑</span>
+                              
+                            </div>
+                          </td>
                         </tr>
                       ))}
                   </tbody>
-                  <tfoot>
-                    <tr>
-                      <th>Light</th>
-                      <th>Location</th>
-                      <th>Trigger Type</th>
-                      <th>Status</th>
-                      <th>Warnings</th>
-                    </tr>
-                  </tfoot>
                 </table>
               </div>
             </div>

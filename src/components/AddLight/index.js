@@ -22,7 +22,8 @@ class AddLight extends Component {
       LDR: ldr,
       PIR: pir,
       Status: "OFF",
-      Warning: "OFF"
+      Warning: 0,
+      Defect: false
     });
     alert("Light added to the system successfully!");
 
