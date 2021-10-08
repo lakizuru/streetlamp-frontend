@@ -11,8 +11,9 @@ import Footer from "../Footer";
 class SignIn extends Component {
   render() {
     return (
-      <div style={{backgroundColor: '#4e73df'}}>
-      <div className="container">
+      <div style={{backgroundColor: '#4e73df', position: 'absolute', width: '100%', bottom: '0px', top: '0px'}}>
+
+      <div className="container" style={{backgroundColor: '#4e73df'}}>
         <div className="row justify-content-center">
           <div className="col-lg-5">
             <div className="card shadow-lg o-hidden border-0 my-5">
@@ -37,7 +38,9 @@ class SignIn extends Component {
           </div>
         </div>
       </div>
+      <div style={{bottom: '0px', position: 'absolute', width: '100%'}}>
       <Footer/>
+      </div>
       </div>
     );
   }
@@ -85,14 +88,14 @@ class SignInFormBase extends Component {
     const isInvalid = password === "" || email === "";
 
     return (
-      <form onSubmit={this.onSubmit} className="user">
+      <form onSubmit={this.onSubmit}>
         <div className="mb-3">
           <input
             className="form-control form-control-user"
             type="email"
             id="exampleInputEmail"
             aria-describedby="emailHelp"
-            placeholder="Enter Email Address..."
+            placeholder="Email"
             name="email"
             value={email}
             onChange={this.onChange}

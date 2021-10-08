@@ -6,10 +6,10 @@ import WeatherConfig from "./WeatherConfig";
 class Settings extends Component {
   render() {
     return (
-      <div className="flex-container">
+      <div className="flex-container" style={{backgroundColor: '#4e73df', width: '100%', height: '100%', position: 'absolute', bottom: '0px', top: '70px'}}>
         <div className="row">
           <div className="col">
-            <div className="container">
+            <div className="container" style={{width: '600px'}}>
               <div className="card shadow-lg o-hidden border-0 my-5">
                 <div className="p-5">
                   <div className="text-center">
@@ -23,12 +23,12 @@ class Settings extends Component {
             </div>
           </div>
           <div className="col">
-            <div className="container">
+            <div className="container" style={{width: '600px'}}>
               <div className="card shadow-lg o-hidden border-0 my-5">
                 <div className="p-5">
                   <div className="text-center">
                     <h4 className="text-dark mb-4">
-                      📌 Change Weather Location
+                      <i className="fa fa-map-marker" aria-hidden="true" style={{color: 'red'}}/> Change Weather Location
                     </h4>
                   </div>
                   <WeatherConfig />

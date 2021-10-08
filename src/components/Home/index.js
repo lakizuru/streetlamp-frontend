@@ -12,7 +12,7 @@ class Home extends Component {
       offLights: [],
       faults: [],
 
-      displayName: '',
+      displayName: "",
 
       isLoading: true,
 
@@ -69,8 +69,7 @@ class Home extends Component {
       snapshot.forEach((snap) => {
         if (snap.val().Status === "ON") {
           onLights.push(snap.val());
-        }
-        else if (snap.val().Status === "OFF") {
+        } else if (snap.val().Status === "OFF") {
           offLights.push(snap.val());
         }
         if (snap.val().Defect === true) {
@@ -161,13 +160,11 @@ class Home extends Component {
             <div class="col-lg-8 col-xl-9">
               <div class="card shadow mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                  <h6 class="text-primary fw-bold m-0">
-                    Location
-                  </h6>
+                  <h6 class="text-primary fw-bold m-0">Location</h6>
                 </div>
                 <div class="card-body">
-                  <div class="chart-area" style={{height: 400}}>
-                    <Map/>
+                  <div class="chart-area" style={{ height: 400 }}>
+                    <Map />
                   </div>
                 </div>
               </div>
@@ -178,10 +175,10 @@ class Home extends Component {
                   <h6 class="text-primary fw-bold m-0">Weather</h6>
                 </div>
                 <div class="card-body">
-                <Weather/>
+                  <Weather />
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h6 class="text-primary fw-bold m-0">Manual Override</h6>
@@ -244,9 +241,7 @@ class Home extends Component {
                   </div>
                 </div>
               </div>
-              
             </div>
-            
           </div>
         </div>
       );

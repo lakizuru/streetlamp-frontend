@@ -43,9 +43,9 @@ class AddLight extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div style={{backgroundColor: '#4e73df', width: '100%', position: 'absolute', bottom: '0px', top: '70px'}}>
       <div className="row justify-content-center">
-        <div className="card shadow o-hidden border-0 my-5" style={{width:'50%'}}>
+        <div className="card shadow o-hidden border-0 my-5" style={{width:'600px'}}>
 
             <div className="row">
               
@@ -54,7 +54,7 @@ class AddLight extends Component {
                   <div className="text-center">
                     <h4 className="text-dark mb-4">Add Light</h4>
                   </div>
-                  <form className="user">
+                  <form>
                     <div className="row mb-3" style={{ height: "48px" }}>
                       <div className="col-sm-6 mb-3 mb-sm-0">
                         <input

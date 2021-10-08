@@ -13,7 +13,9 @@ class ProtectedRoute extends React.Component {
             <div style={{backgroundColor: '#4e73df'}}>
             <NavBar/>
             <Component />
-            <Footer/>
+            <div style={{bottom: '0px', position: 'absolute', width: '100%', height: '0px'}}>
+      <Footer/>
+      </div>
             </div>
         ) : (
             <Redirect to={ROUTES.SIGN_IN} />
