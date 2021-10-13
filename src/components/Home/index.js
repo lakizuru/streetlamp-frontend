@@ -137,22 +137,22 @@ class Home extends Component {
           <div class="row">
             <NumCard
               color="blue"
-              title="Connected"
+              title="⛓️ Connected"
               value={this.state.onLights.length + this.state.offLights.length}
             />
             <NumCard
               color="green"
-              title="Active"
+              title="☢️ Active"
               value={this.state.onLights.length}
             />
             <NumCard
               color="orange"
-              title="Inactive"
+              title="⏳ Inactive"
               value={this.state.offLights.length}
             />
             <NumCard
               color="red"
-              title="Faults"
+              title="⚠️ Faults"
               value={this.state.faults.length}
             />
           </div>
